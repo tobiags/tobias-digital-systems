@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -41,9 +42,101 @@ body {
   color: var(--text);
 }
 
-/* Button & Link Press Feedback */
+/* Animations & Keyframes */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes driftA {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.4deg);
+  }
+}
+
+@keyframes driftB {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(9px) rotate(-0.4deg);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Marquee Classes */
+.animate-marquee-left {
+  display: flex !important;
+  width: max-content !important;
+  animation: marqueeLeft 38s linear infinite !important;
+  will-change: transform;
+}
+
+.animate-marquee-right {
+  display: flex !important;
+  width: max-content !important;
+  animation: marqueeRight 42s linear infinite !important;
+  will-change: transform;
+}
+
+.animate-marquee-left:hover,
+.animate-marquee-right:hover {
+  animation-play-state: paused !important;
+}
+
+/* Drift animations */
+.animate-drift-a {
+  animation: driftA 7s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+.animate-drift-b {
+  animation: driftB 8.5s ease-in-out infinite !important;
+  will-change: transform;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Button & Link Feedback */
 a, button {
-  transition: opacity 160ms ease, color 160ms ease, background-color 200ms ease, border-color 200ms ease, transform 100ms ease-out;
+  transition: opacity 160ms ease, color 160ms ease, background-color 200ms ease, border-color 200ms ease, transform 120ms ease-out;
 }
 
 a:active, button:active {
@@ -68,8 +161,8 @@ a:active, button:active {
 
 .btn-primary:hover {
   opacity: 0.88;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
 }
 
 .btn-ghost {
@@ -90,32 +183,15 @@ a:active, button:active {
 
 .btn-ghost:hover {
   background-color: var(--surface-2);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   border-color: var(--text);
 }
 
-/* Header dynamic scroll blur */
-.header-glass {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(246, 243, 238, 0.85);
-  backdrop-filter: blur(18px) saturate(160%);
-  border-bottom: 1px solid var(--border);
-  transition: background-color 260ms ease, border-color 260ms ease;
+/* Hide scrollbars for clean marquee look */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-
-/* Optical display fonts */
-.display-serif {
-  font-family: var(--font-display), 'Bodoni Moda', Georgia, serif;
-  font-optical-sizing: auto;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

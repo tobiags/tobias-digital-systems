@@ -86,36 +86,58 @@ const row2 = [
     rating: '5.0',
     date: 'Il y a 1 an',
   },
+  {
+    platform: 'FIVERR',
+    author: 'crystalreview',
+    image: '/images/fiverr-crystalreview.png',
+    link: 'https://fr.fiverr.com/s/Q7lW5mP',
+    rating: '5.0',
+    date: 'Il y a 4 mois',
+  },
+  {
+    platform: 'FIVERR',
+    author: 'azelarabazfar',
+    image: '/images/fiverr-azelarabazfar.png',
+    link: 'https://fr.fiverr.com/s/Q7lW5mP',
+    rating: '5.0',
+    date: 'Il y a 7 mois',
+  },
 ];
 
 export function Testimonials() {
+  const marquee1 = [...row1, ...row1];
+  const marquee2 = [...row2, ...row2];
+
   return (
     <section
       id="testimonials"
-      className="max-w-[1440px] mx-auto py-16 md:py-24 border-t border-border-subtle overflow-hidden"
+      className="w-full py-16 md:py-24 border-t border-border-subtle overflow-hidden"
     >
-      <div className="px-6 md:px-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
-          <div className="font-mono text-[11px] tracking-widest text-text-muted mb-4">
-            TÉMOIGNAGES & SOCIAL PROOF · 08
+          <div className="font-mono text-[11px] tracking-widest text-text-muted mb-4 uppercase">
+            TÉMOIGNAGES · 08
           </div>
           <h2 className="font-display font-normal text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[22ch]">
             Ce que les clients disent après la livraison.
           </h2>
         </div>
         <p className="text-xs md:text-sm text-text-muted max-w-[34ch] leading-relaxed">
-          Avis vérifiés ComeUp & Fiverr — captures réelles, évaluations certifiées
-          sans complaisance.
+          Avis vérifiés ComeUp &amp; Fiverr — captures réelles, évaluations certifiées sans complaisance.
         </p>
       </div>
 
-      {/* Marquee Row 1 (ComeUp) */}
-      <div className="relative w-full overflow-x-auto pb-4 pt-2 no-scrollbar">
-        <div className="flex gap-5 min-w-max px-6 md:px-10">
-          {[...row1, ...row1].map((t, idx) => (
+      {/* Row 1 (Défilement continu vers la gauche) */}
+      <div className="relative w-full overflow-hidden py-3">
+        {/* Subtle gradient fades on edges */}
+        <div className="pointer-events-none absolute left-0 inset-y-0 w-16 md:w-32 bg-gradient-to-r from-bg to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 inset-y-0 w-16 md:w-32 bg-gradient-to-l from-bg to-transparent z-10" />
+
+        <div className="animate-marquee-left flex gap-5">
+          {marquee1.map((t, idx) => (
             <div
               key={idx}
-              className="w-[320px] md:w-[360px] bg-surface-2 border border-border-subtle rounded-xl overflow-hidden shadow-sm flex flex-col flex-none hover:border-border-strong transition-all"
+              className="w-[300px] md:w-[350px] bg-surface-2 border border-border-subtle rounded-xl overflow-hidden shadow-sm flex flex-col flex-none hover:border-border-strong hover:shadow-md transition-all"
             >
               <div className="flex justify-between items-center px-4 py-2.5 border-b border-border-subtle bg-bg-soft/40">
                 <span className="font-mono text-[10px] font-semibold tracking-wider text-text-soft">
@@ -127,12 +149,12 @@ export function Testimonials() {
                 </span>
               </div>
 
-              <div className="relative w-full h-[150px] bg-bg overflow-hidden">
+              <div className="relative w-full h-[155px] bg-bg overflow-hidden">
                 <Image
                   src={t.image}
                   alt={t.author}
                   fill
-                  sizes="360px"
+                  sizes="350px"
                   className="object-cover object-top"
                 />
               </div>
@@ -156,13 +178,17 @@ export function Testimonials() {
         </div>
       </div>
 
-      {/* Marquee Row 2 (Fiverr) */}
-      <div className="relative w-full overflow-x-auto pt-4 no-scrollbar">
-        <div className="flex gap-5 min-w-max px-6 md:px-10">
-          {[...row2, ...row2].map((t, idx) => (
+      {/* Row 2 (Défilement continu vers la droite) */}
+      <div className="relative w-full overflow-hidden py-3">
+        {/* Subtle gradient fades on edges */}
+        <div className="pointer-events-none absolute left-0 inset-y-0 w-16 md:w-32 bg-gradient-to-r from-bg to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 inset-y-0 w-16 md:w-32 bg-gradient-to-l from-bg to-transparent z-10" />
+
+        <div className="animate-marquee-right flex gap-5">
+          {marquee2.map((t, idx) => (
             <div
               key={idx}
-              className="w-[320px] md:w-[360px] bg-surface-2 border border-border-subtle rounded-xl overflow-hidden shadow-sm flex flex-col flex-none hover:border-border-strong transition-all"
+              className="w-[300px] md:w-[350px] bg-surface-2 border border-border-subtle rounded-xl overflow-hidden shadow-sm flex flex-col flex-none hover:border-border-strong hover:shadow-md transition-all"
             >
               <div className="flex justify-between items-center px-4 py-2.5 border-b border-border-subtle bg-bg-soft/40">
                 <span className="font-mono text-[10px] font-semibold tracking-wider text-text-soft">
@@ -174,12 +200,12 @@ export function Testimonials() {
                 </span>
               </div>
 
-              <div className="relative w-full h-[150px] bg-bg overflow-hidden">
+              <div className="relative w-full h-[155px] bg-bg overflow-hidden">
                 <Image
                   src={t.image}
                   alt={t.author}
                   fill
-                  sizes="360px"
+                  sizes="350px"
                   className="object-cover object-top"
                 />
               </div>
