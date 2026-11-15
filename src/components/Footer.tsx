@@ -59,7 +59,7 @@ export function Footer() {
           COMEUP
         </Link>
         <Link
-          href="https://fr.fiverr.com/s/Q7lW5mP"
+          href="https://fr.fiverr.com/s/RVraW78"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-accent transition-colors"

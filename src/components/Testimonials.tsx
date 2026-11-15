@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Star } from 'lucide-react';
+import { ArrowUpRight, Star, ShieldCheck } from 'lucide-react';
 
 const row1 = [
   {
@@ -58,7 +58,7 @@ const row2 = [
     platform: 'FIVERR',
     author: 'crystalreview',
     image: '/images/fiverr-crystalreview.png',
-    link: 'https://fr.fiverr.com/s/Q7lW5mP',
+    link: 'https://fr.fiverr.com/s/RVraW78',
     rating: '5.0',
     date: 'Il y a 4 mois',
   },
@@ -66,7 +66,7 @@ const row2 = [
     platform: 'FIVERR',
     author: 'azelarabazfar',
     image: '/images/fiverr-azelarabazfar.png',
-    link: 'https://fr.fiverr.com/s/Q7lW5mP',
+    link: 'https://fr.fiverr.com/s/RVraW78',
     rating: '5.0',
     date: 'Il y a 7 mois',
   },
@@ -74,7 +74,7 @@ const row2 = [
     platform: 'FIVERR',
     author: 'bllo53',
     image: '/images/fiverr-bllo53-1.png',
-    link: 'https://fr.fiverr.com/s/Q7lW5mP',
+    link: 'https://fr.fiverr.com/s/RVraW78',
     rating: '5.0',
     date: 'Il y a 11 mois',
   },
@@ -82,7 +82,7 @@ const row2 = [
     platform: 'FIVERR',
     author: 'bllo53',
     image: '/images/fiverr-bllo53-2.png',
-    link: 'https://fr.fiverr.com/s/Q7lW5mP',
+    link: 'https://fr.fiverr.com/s/RVraW78',
     rating: '5.0',
     date: 'Il y a 1 an',
   },
@@ -90,7 +90,7 @@ const row2 = [
     platform: 'FIVERR',
     author: 'crystalreview',
     image: '/images/fiverr-crystalreview.png',
-    link: 'https://fr.fiverr.com/s/Q7lW5mP',
+    link: 'https://fr.fiverr.com/s/RVraW78',
     rating: '5.0',
     date: 'Il y a 4 mois',
   },
@@ -98,7 +98,7 @@ const row2 = [
     platform: 'FIVERR',
     author: 'azelarabazfar',
     image: '/images/fiverr-azelarabazfar.png',
-    link: 'https://fr.fiverr.com/s/Q7lW5mP',
+    link: 'https://fr.fiverr.com/s/RVraW78',
     rating: '5.0',
     date: 'Il y a 7 mois',
   },
@@ -113,18 +113,64 @@ export function Testimonials() {
       id="testimonials"
       className="w-full py-16 md:py-24 border-t border-border-subtle overflow-hidden"
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
         <div>
-          <div className="font-mono text-[11px] tracking-widest text-text-muted mb-4 uppercase">
-            TÉMOIGNAGES · 08
+          <div className="flex items-center gap-2 font-mono text-[11px] tracking-widest text-text-muted mb-4 uppercase">
+            <ShieldCheck className="w-4 h-4 text-accent" />
+            <span>TÉMOIGNAGES · 08 · AVIS VÉRIFIABLES</span>
           </div>
-          <h2 className="font-display font-normal text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[22ch]">
+          <h2 className="font-display font-normal text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[22ch] mb-4">
             Ce que les clients disent après la livraison.
           </h2>
+          <p className="text-xs md:text-sm text-text-muted max-w-[48ch] leading-relaxed">
+            Évaluations authentiques sans complaisance. Vous pouvez vérifier en direct chaque avis sur nos profils publics certifiés :
+          </p>
         </div>
-        <p className="text-xs md:text-sm text-text-muted max-w-[34ch] leading-relaxed">
-          Avis vérifiés ComeUp &amp; Fiverr — captures réelles, évaluations certifiées sans complaisance.
-        </p>
+
+        {/* Boutons d'accès et de vérification directe des profils */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+          <Link
+            href="https://comeup.com/fr/@tobias-06"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between gap-4 bg-surface-2 hover:bg-white border border-border-subtle hover:border-text-main px-4 py-3 rounded-xl shadow-sm transition-all"
+            title="Vérifier le profil officiel de Tobias sur ComeUp"
+          >
+            <div className="flex flex-col">
+              <span className="font-mono text-[9px] uppercase tracking-wider text-text-muted flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                COMEUP · PROFIL VÉRIFIÉ
+              </span>
+              <span className="font-mono text-xs font-semibold text-text-main mt-0.5">
+                410+ AVIS · 99% POSITIFS
+              </span>
+            </div>
+            <div className="w-8 h-8 rounded-full bg-bg-soft group-hover:bg-text-main group-hover:text-surface-2 flex items-center justify-center text-text-main transition-colors">
+              <ArrowUpRight className="w-4 h-4" />
+            </div>
+          </Link>
+
+          <Link
+            href="https://fr.fiverr.com/s/RVraW78"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center justify-between gap-4 bg-surface-2 hover:bg-white border border-border-subtle hover:border-text-main px-4 py-3 rounded-xl shadow-sm transition-all"
+            title="Vérifier le profil officiel de Tobias sur Fiverr"
+          >
+            <div className="flex flex-col">
+              <span className="font-mono text-[9px] uppercase tracking-wider text-text-muted flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                FIVERR · PROFIL VÉRIFIÉ
+              </span>
+              <span className="font-mono text-xs font-semibold text-text-main mt-0.5">
+                NOTE 5.0 ★ EXCELLENCE
+              </span>
+            </div>
+            <div className="w-8 h-8 rounded-full bg-bg-soft group-hover:bg-text-main group-hover:text-surface-2 flex items-center justify-center text-text-main transition-colors">
+              <ArrowUpRight className="w-4 h-4" />
+            </div>
+          </Link>
+        </div>
       </div>
 
       {/* Row 1 (Défilement continu vers la gauche) */}
@@ -228,6 +274,34 @@ export function Testimonials() {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Verification footer strip */}
+      <div className="max-w-[1440px] mx-auto px-6 md:px-10 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-text-muted border-t border-border-subtle/60 pt-6">
+        <span className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span>Profils et avis publics vérifiables en direct sur les plateformes officielles :</span>
+        </span>
+        <div className="flex items-center gap-6">
+          <Link
+            href="https://comeup.com/fr/@tobias-06"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-main hover:text-accent font-semibold transition-colors flex items-center gap-1"
+          >
+            <span>VOIR COMEUP</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
+          <Link
+            href="https://fr.fiverr.com/s/RVraW78"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-text-main hover:text-accent font-semibold transition-colors flex items-center gap-1"
+          >
+            <span>VOIR FIVERR</span>
+            <ArrowUpRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
       </div>
     </section>

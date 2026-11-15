@@ -14,7 +14,7 @@ export function JsonLd() {
         sameAs: [
           'https://github.com/tobiags',
           'https://comeup.com/fr/@tobias-06',
-          'https://fr.fiverr.com/s/Q7lW5mP',
+          'https://fr.fiverr.com/s/RVraW78',
           'https://www.youtube.com/@tobiasagossou4193',
         ],
       },
