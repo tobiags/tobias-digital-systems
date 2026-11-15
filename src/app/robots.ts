@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://tobias-agossou.com/sitemap.xml',
+    sitemap: 'https://www.tobiasagossou.website/sitemap.xml',
   };
 }

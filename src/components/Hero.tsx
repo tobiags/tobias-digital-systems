@@ -46,19 +46,19 @@ export function Hero() {
           <div>
             <div className="mb-1 text-[9px] sm:text-[9.5px]">AVIS POSITIFS</div>
             <div className="font-display text-xl sm:text-2xl md:text-3xl text-text-main font-normal tracking-tight">
-              400+
+              410+
             </div>
           </div>
           <div>
-            <div className="mb-1 text-[9px] sm:text-[9.5px]">MISSIONS RÉALISÉES</div>
+            <div className="mb-1 text-[9px] sm:text-[9.5px]">VENTES RÉALISÉES</div>
             <div className="font-display text-xl sm:text-2xl md:text-3xl text-text-main font-normal tracking-tight">
-              508
+              519
             </div>
           </div>
           <div className="text-right">
             <div className="mb-1 text-[9px] sm:text-[9.5px]">FREELANCE DEPUIS</div>
             <div className="font-display text-xl sm:text-2xl md:text-3xl text-text-main font-normal tracking-tight">
-              2021
+              AOÛT 2021
             </div>
           </div>
         </div>
@@ -100,18 +100,18 @@ export function Hero() {
           />
         </div>
 
-        {/* Card 1: +10 Projets (Top Left) */}
+        {/* Card 1: 519 Ventes (Top Left) */}
         <div
-          className="absolute left-[1%] sm:left-[0%] top-[4%] w-[130px] sm:w-[160px] bg-surface-2 border border-border-subtle rounded-xl p-3 sm:p-4 shadow-md animate-drift-a z-20"
+          className="absolute left-[1%] sm:left-[0%] top-[4%] w-[135px] sm:w-[165px] bg-surface-2 border border-border-subtle rounded-xl p-3 sm:p-4 shadow-md animate-drift-a z-20"
           style={{ animationDelay: '0s' }}
         >
           <div className="font-display text-xl sm:text-2xl font-normal text-text-main mb-0.5">
-            +10
+            519
           </div>
           <div className="font-mono text-[8.5px] sm:text-[9.5px] tracking-wider text-text-muted leading-tight">
-            PROJETS LANCÉS
+            VENTES AU TOTAL
             <br />
-            depuis 2022
+            sur ComeUp (99%)
           </div>
         </div>
 

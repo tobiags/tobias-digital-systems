@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Tobias Agossou — Digital Systems Studio | Architecture, UI & Automatisation',
   description:
-    "Tobias Agossou aide les entreprises ambitieuses à structurer, concevoir et faire évoluer des systèmes numériques clairs, performants et centrés sur l'humain. 400+ avis vérifiés, 508 missions réussies.",
+    "Tobias Agossou aide les entreprises ambitieuses à structurer, concevoir et faire évoluer des systèmes numériques clairs, performants et centrés sur l'humain. 410+ avis vérifiés, 519 missions réussies.",
   keywords: [
     'Tobias Agossou',
     'Digital Systems Studio',

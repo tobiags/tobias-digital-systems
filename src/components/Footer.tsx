@@ -1,17 +1,24 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUp } from 'lucide-react';
 
 export function Footer() {
+  const [currentYear, setCurrentYear] = useState<number>(new Date().getFullYear());
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <footer className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between gap-6">
-      {/* Brand & Copyright */}
+      {/* Brand & Dynamic Automated Copyright */}
       <div className="flex items-center gap-4">
         <Link
           href="/"
@@ -27,7 +34,7 @@ export function Footer() {
           />
         </Link>
         <div className="font-mono text-[10.5px] text-text-muted leading-relaxed border-l border-border-subtle pl-4">
-          © {new Date().getFullYear()} TOBIAS AGOSSOU
+          © {currentYear} TOBIAS AGOSSOU
           <br />
           DIGITAL SYSTEMS STUDIO
         </div>
@@ -71,10 +78,20 @@ export function Footer() {
 
       {/* Legal & Scroll Top */}
       <div className="flex items-center gap-6">
-        <div className="flex gap-4 font-mono text-[10.5px] text-text-muted">
-          <span>MENTIONS LÉGALES</span>
+        <div className="flex items-center gap-3 font-mono text-[10.5px] text-text-muted">
+          <Link
+            href="/mentions-legales"
+            className="hover:text-text-main transition-colors underline-offset-4 hover:underline"
+          >
+            MENTIONS LÉGALES
+          </Link>
           <span>·</span>
-          <span>CONFIDENTIALITÉ</span>
+          <Link
+            href="/confidentialite"
+            className="hover:text-text-main transition-colors underline-offset-4 hover:underline"
+          >
+            CONFIDENTIALITÉ
+          </Link>
         </div>
 
         <button

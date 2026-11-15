@@ -137,7 +137,7 @@ export function Testimonials() {
           {marquee1.map((t, idx) => (
             <div
               key={idx}
-              className="w-[300px] md:w-[350px] bg-surface-2 border border-border-subtle rounded-xl overflow-hidden shadow-sm flex flex-col flex-none hover:border-border-strong hover:shadow-md transition-all"
+              className="w-[310px] sm:w-[350px] md:w-[380px] bg-surface-2 border border-border-subtle rounded-xl overflow-hidden shadow-sm flex flex-col flex-none hover:border-border-strong hover:shadow-md transition-all"
             >
               <div className="flex justify-between items-center px-4 py-2.5 border-b border-border-subtle bg-bg-soft/40">
                 <span className="font-mono text-[10px] font-semibold tracking-wider text-text-soft">
@@ -149,13 +149,14 @@ export function Testimonials() {
                 </span>
               </div>
 
-              <div className="relative w-full h-[155px] bg-bg overflow-hidden">
+              {/* Review screenshot perfectly framed without cropping */}
+              <div className="relative w-full h-[180px] sm:h-[195px] bg-white p-3 flex items-center justify-center overflow-hidden">
                 <Image
                   src={t.image}
-                  alt={t.author}
+                  alt={`Avis client ${t.author}`}
                   fill
-                  sizes="350px"
-                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 310px, 380px"
+                  className="object-contain p-1"
                 />
               </div>
 
@@ -188,7 +189,7 @@ export function Testimonials() {
           {marquee2.map((t, idx) => (
             <div
               key={idx}
-              className="w-[300px] md:w-[350px] bg-surface-2 border border-border-subtle rounded-xl overflow-hidden shadow-sm flex flex-col flex-none hover:border-border-strong hover:shadow-md transition-all"
+              className="w-[340px] sm:w-[420px] md:w-[480px] bg-surface-2 border border-border-subtle rounded-xl overflow-hidden shadow-sm flex flex-col flex-none hover:border-border-strong hover:shadow-md transition-all"
             >
               <div className="flex justify-between items-center px-4 py-2.5 border-b border-border-subtle bg-bg-soft/40">
                 <span className="font-mono text-[10px] font-semibold tracking-wider text-text-soft">
@@ -200,13 +201,14 @@ export function Testimonials() {
                 </span>
               </div>
 
-              <div className="relative w-full h-[155px] bg-bg overflow-hidden">
+              {/* Wide panoramic Fiverr review screenshot perfectly fitted without cropping */}
+              <div className="relative w-full h-[110px] sm:h-[125px] bg-white p-3 flex items-center justify-center overflow-hidden">
                 <Image
                   src={t.image}
-                  alt={t.author}
+                  alt={`Avis Fiverr ${t.author}`}
                   fill
-                  sizes="350px"
-                  className="object-cover object-top"
+                  sizes="(max-width: 768px) 340px, 480px"
+                  className="object-contain p-1"
                 />
               </div>
 
