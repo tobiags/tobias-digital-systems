@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f6f3ee;
+  --bg-soft: #f1ede7;
+  --surface: #fbf8f4;
+  --surface-2: #ffffff;
+  --text: #111111;
+  --text-soft: #4b4b4b;
+  --text-muted: #777777;
+  --border: rgba(17, 17, 17, 0.10);
+  --border-strong: rgba(17, 17, 17, 0.18);
+  --accent: #2952ff;
+  --accent-soft: rgba(41, 82, 255, 0.08);
+  --accent-line: rgba(41, 82, 255, 0.35);
+  --dur-base: 220ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+::selection {
+  background: rgba(41, 82, 255, 0.18);
+  color: var(--text);
+}
+
+/* Button & Link Press Feedback */
+a, button {
+  transition: opacity 160ms ease, color 160ms ease, background-color 200ms ease, border-color 200ms ease, transform 100ms ease-out;
+}
+
+a:active, button:active {
+  transform: scale(0.97) !important;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--text);
+  color: var(--surface-2);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 13px 22px;
+  border-radius: 6px;
+  border: 1px solid var(--text);
+  transition: opacity 200ms ease, transform 160ms ease, box-shadow 200ms ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 13px 22px;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  transition: background-color 200ms ease, transform 160ms ease, border-color 200ms ease;
+}
+
+.btn-ghost:hover {
+  background-color: var(--surface-2);
+  transform: translateY(-1px);
+  border-color: var(--text);
+}
+
+/* Header dynamic scroll blur */
+.header-glass {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(246, 243, 238, 0.85);
+  backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 260ms ease, border-color 260ms ease;
+}
+
+/* Optical display fonts */
+.display-serif {
+  font-family: var(--font-display), 'Bodoni Moda', Georgia, serif;
+  font-optical-sizing: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
