@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 export function Header() {
@@ -25,13 +26,21 @@ export function Header() {
       }`}
     >
       <header className="max-w-[1440px] mx-auto h-[84px] md:h-[92px] px-6 md:px-10 flex items-center justify-between">
-        {/* Brand Monogram */}
-        <div className="flex items-center gap-6">
+        {/* Brand Logo & Editorial Issue */}
+        <div className="flex items-center gap-5 sm:gap-6">
           <Link
             href="/"
-            className="font-display font-semibold text-2xl tracking-tight text-text-main hover:text-accent transition-colors"
+            className="flex items-center transition-transform hover:scale-[1.02] duration-200"
+            aria-label="Tobias Agossou — Digital Systems Studio"
           >
-            TA
+            <Image
+              src="/images/logo.png"
+              alt="Tobias Agossou"
+              width={150}
+              height={100}
+              priority
+              className="h-10 sm:h-11 md:h-12 w-auto object-contain"
+            />
           </Link>
           <div className="hidden sm:block font-mono text-[10px] md:text-[11px] tracking-widest text-text-muted leading-tight border-l border-border-subtle pl-4">
             ISSUE 03
@@ -91,6 +100,18 @@ export function Header() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-surface border-b border-border-subtle px-6 py-6 animate-fadeIn">
+          <div className="flex items-center justify-between pb-4 mb-4 border-b border-border-subtle">
+            <Image
+              src="/images/logo.png"
+              alt="Tobias Agossou"
+              width={120}
+              height={80}
+              className="h-9 w-auto object-contain"
+            />
+            <span className="font-mono text-[10px] text-text-muted tracking-widest uppercase">
+              STUDIO
+            </span>
+          </div>
           <nav className="flex flex-col gap-4 text-sm font-medium tracking-wide">
             <Link
               href="#about"

@@ -87,10 +87,17 @@ export function Hero() {
 
         {/* Monogram Stamp Badge */}
         <div
-          className="absolute right-[4%] sm:right-[6%] top-[24%] sm:top-[30%] w-11 h-11 sm:w-12 sm:h-12 rounded-full border border-border-strong bg-surface-2 flex items-center justify-center font-display font-semibold text-xs sm:text-sm shadow-md animate-drift-a z-20"
+          className="absolute right-[4%] sm:right-[6%] top-[24%] sm:top-[30%] w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-border-strong bg-surface-2 flex items-center justify-center p-2 shadow-md animate-drift-a z-20"
           style={{ animationDelay: '0.4s' }}
+          title="Tobias Agossou — Sceau Officiel"
         >
-          TA
+          <Image
+            src="/images/logo-icon.png"
+            alt="Sceau Tobias Agossou"
+            width={44}
+            height={44}
+            className="w-full h-full object-contain"
+          />
         </div>
 
         {/* Card 1: +10 Projets (Top Left) */}

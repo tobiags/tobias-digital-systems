@@ -42,9 +42,18 @@ export const metadata: Metadata = {
     'NextJS',
     'Freelance Tech',
   ],
-  authors: [{ name: 'Tobias Agossou', url: 'https://tobias-agossou.com' }],
+  authors: [{ name: 'Tobias Agossou', url: 'https://www.tobiasagossou.website' }],
   creator: 'Tobias Agossou',
-  metadataBase: new URL('https://tobias-agossou.com'),
+  metadataBase: new URL('https://www.tobiasagossou.website'),
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/images/logo-icon.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/logo-icon.png', sizes: '192x192', type: 'image/png' },
+    ],
+  },
   alternates: {
     canonical: '/',
   },
@@ -52,13 +61,13 @@ export const metadata: Metadata = {
     title: 'Tobias Agossou — Digital Systems Studio',
     description:
       'Conception de systèmes numériques élégants, véloces et automatisés. 400+ avis vérifiés.',
-    url: 'https://tobias-agossou.com',
+    url: 'https://www.tobiasagossou.website',
     siteName: 'Tobias Agossou — Digital Systems Studio',
     images: [
       {
-        url: '/images/portrait-tobias.png',
-        width: 1200,
-        height: 630,
+        url: '/images/logo.png',
+        width: 988,
+        height: 657,
         alt: 'Tobias Agossou — Digital Systems Studio',
       },
     ],
@@ -70,7 +79,7 @@ export const metadata: Metadata = {
     title: 'Tobias Agossou — Digital Systems Studio',
     description:
       'Conception de systèmes numériques élégants, véloces et automatisés. 400+ avis vérifiés.',
-    images: ['/images/portrait-tobias.png'],
+    images: ['/images/logo.png'],
   },
   robots: {
     index: true,

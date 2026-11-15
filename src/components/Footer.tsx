@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUp } from 'lucide-react';
 
 export function Footer() {
@@ -12,10 +13,20 @@ export function Footer() {
     <footer className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between gap-6">
       {/* Brand & Copyright */}
       <div className="flex items-center gap-4">
-        <span className="font-display font-semibold text-lg text-text-main">
-          TA
-        </span>
-        <div className="font-mono text-[10.5px] text-text-muted leading-relaxed">
+        <Link
+          href="/"
+          className="transition-opacity hover:opacity-85"
+          aria-label="Tobias Agossou — Accueil"
+        >
+          <Image
+            src="/images/logo.png"
+            alt="Tobias Agossou"
+            width={120}
+            height={80}
+            className="h-9 md:h-10 w-auto object-contain"
+          />
+        </Link>
+        <div className="font-mono text-[10.5px] text-text-muted leading-relaxed border-l border-border-subtle pl-4">
           © {new Date().getFullYear()} TOBIAS AGOSSOU
           <br />
           DIGITAL SYSTEMS STUDIO
