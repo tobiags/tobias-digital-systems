@@ -73,7 +73,16 @@ export function Header() {
         </nav>
 
         {/* CTA Button & Mobile Toggle */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 md:gap-4">
+          <Link
+            href="/v2"
+            className="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-border-strong text-text-muted hover:text-text-main font-mono text-[11px] transition-colors"
+            title="Consulter la variante de design V2 Studio"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span>Variante V2</span>
+          </Link>
+
           <Link
             href="/#contact"
             className="hidden sm:inline-flex items-center gap-2 bg-text-main text-surface-2 text-xs font-semibold tracking-wider px-5 py-2.5 rounded-md hover:bg-black/85 transition-all"
@@ -135,6 +144,14 @@ export function Header() {
               className="text-text-main hover:text-accent py-2 border-b border-border-subtle"
             >
               AVIS VÉRIFIÉS
+            </Link>
+            <Link
+              href="/v2"
+              onClick={() => setMobileMenuOpen(false)}
+              className="inline-flex items-center justify-between text-accent font-mono text-xs py-2 border-b border-border-subtle"
+            >
+              <span>DÉCOUVRIR LA VARIANTE V2</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </Link>
             <Link
               href="/#contact"

@@ -92,6 +92,13 @@ export function Footer() {
           >
             CONFIDENTIALITÉ
           </Link>
+          <span>·</span>
+          <Link
+            href="/v2"
+            className="text-accent hover:underline font-medium"
+          >
+            VARIANTE V2
+          </Link>
         </div>
 
         <button
