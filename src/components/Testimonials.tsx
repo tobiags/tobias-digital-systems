@@ -1,8 +1,23 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Star, ShieldCheck } from 'lucide-react';
+import { ArrowUpRight, Star, ShieldCheck, Maximize2, X, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { SmoothMarquee } from '@/components/motion/SmoothMarquee';
+import { RevealOnScroll } from '@/components/motion/RevealOnScroll';
 
-const row1 = [
+interface ReviewItem {
+  platform: 'COMEUP' | 'FIVERR';
+  author: string;
+  image: string;
+  link: string;
+  rating: string;
+  date: string;
+}
+
+const row1: ReviewItem[] = [
   {
     platform: 'COMEUP',
     author: 'Virgile_IO',
@@ -53,7 +68,7 @@ const row1 = [
   },
 ];
 
-const row2 = [
+const row2: ReviewItem[] = [
   {
     platform: 'FIVERR',
     author: 'crystalreview',
@@ -105,85 +120,103 @@ const row2 = [
 ];
 
 export function Testimonials() {
+  const [selectedReview, setSelectedReview] = useState<ReviewItem | null>(null);
+
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedReview(null);
+    };
+    if (selectedReview) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [selectedReview]);
+
   const marquee1 = [...row1, ...row1];
   const marquee2 = [...row2, ...row2];
 
   return (
     <section
       id="testimonials"
-      className="w-full py-16 md:py-24 border-t border-border-subtle overflow-hidden"
+      className="w-full py-20 md:py-28 border-t border-border-subtle overflow-hidden"
     >
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
-        <div>
-          <div className="flex items-center gap-2 font-mono text-[11px] tracking-widest text-text-muted mb-4 uppercase">
-            <ShieldCheck className="w-4 h-4 text-accent" />
-            <span>TÉMOIGNAGES · 08 · AVIS VÉRIFIABLES</span>
+      <RevealOnScroll direction="up" distance={20} className="max-w-[1440px] mx-auto px-6 md:px-10 mb-12 md:mb-16">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+          <div>
+            <div className="flex items-center gap-2 font-mono text-[11px] tracking-widest text-text-muted mb-4 uppercase">
+              <ShieldCheck className="w-4 h-4 text-accent" />
+              <span>TÉMOIGNAGES · 08 · AVIS VÉRIFIABLES</span>
+            </div>
+            <h2 className="font-display font-medium text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[22ch] mb-4">
+              Ce que les clients disent après la livraison.
+            </h2>
+            <p className="text-xs md:text-sm text-text-muted max-w-[48ch] leading-relaxed">
+              Évaluations authentiques sans complaisance. Vous pouvez vérifier en direct chaque avis sur mes profils publics certifiés :
+            </p>
           </div>
-          <h2 className="font-display font-normal text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[22ch] mb-4">
-            Ce que les clients disent après la livraison.
-          </h2>
-          <p className="text-xs md:text-sm text-text-muted max-w-[48ch] leading-relaxed">
-            Évaluations authentiques sans complaisance. Vous pouvez vérifier en direct chaque avis sur nos profils publics certifiés :
-          </p>
+
+          {/* Boutons d'accès et de vérification directe des profils */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+            <Link
+              href="https://comeup.com/fr/@tobias-06"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between gap-5 bg-surface-2 hover:bg-white border border-border-subtle hover:border-text-main px-5 py-3.5 rounded-2xl shadow-sm transition-all active:scale-[0.98]"
+              title="Vérifier le profil officiel de Tobias sur ComeUp (508+ avis vérifiés)"
+            >
+              <div className="flex flex-col">
+                <span className="font-mono text-[9.5px] uppercase tracking-wider text-text-muted flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  COMEUP · PROFIL VÉRIFIÉ
+                </span>
+                <span className="font-mono text-xs font-semibold text-text-main mt-0.5">
+                  508+ AVIS · 99% POSITIFS
+                </span>
+              </div>
+              <div className="w-8 h-8 rounded-full bg-bg-soft group-hover:bg-text-main group-hover:text-surface-2 flex items-center justify-center text-text-main transition-colors">
+                <ArrowUpRight className="w-4 h-4" />
+              </div>
+            </Link>
+
+            <Link
+              href="https://fr.fiverr.com/s/RVraW78"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between gap-5 bg-surface-2 hover:bg-white border border-border-subtle hover:border-text-main px-5 py-3.5 rounded-2xl shadow-sm transition-all active:scale-[0.98]"
+              title="Vérifier le profil officiel de Tobias sur Fiverr (Note 5.0)"
+            >
+              <div className="flex flex-col">
+                <span className="font-mono text-[9.5px] uppercase tracking-wider text-text-muted flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  FIVERR · PROFIL VÉRIFIÉ
+                </span>
+                <span className="font-mono text-xs font-semibold text-text-main mt-0.5">
+                  NOTE 5.0 ★ EXCELLENCE
+                </span>
+              </div>
+              <div className="w-8 h-8 rounded-full bg-bg-soft group-hover:bg-text-main group-hover:text-surface-2 flex items-center justify-center text-text-main transition-colors">
+                <ArrowUpRight className="w-4 h-4" />
+              </div>
+            </Link>
+          </div>
         </div>
+      </RevealOnScroll>
 
-        {/* Boutons d'accès et de vérification directe des profils */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
-          <Link
-            href="https://comeup.com/fr/@tobias-06"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-between gap-4 bg-surface-2 hover:bg-white border border-border-subtle hover:border-text-main px-4 py-3 rounded-xl shadow-sm transition-all"
-            title="Vérifier le profil officiel de Tobias sur ComeUp"
-          >
-            <div className="flex flex-col">
-              <span className="font-mono text-[9px] uppercase tracking-wider text-text-muted flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                COMEUP · PROFIL VÉRIFIÉ
-              </span>
-              <span className="font-mono text-xs font-semibold text-text-main mt-0.5">
-                410+ AVIS · 99% POSITIFS
-              </span>
-            </div>
-            <div className="w-8 h-8 rounded-full bg-bg-soft group-hover:bg-text-main group-hover:text-surface-2 flex items-center justify-center text-text-main transition-colors">
-              <ArrowUpRight className="w-4 h-4" />
-            </div>
-          </Link>
-
-          <Link
-            href="https://fr.fiverr.com/s/RVraW78"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-between gap-4 bg-surface-2 hover:bg-white border border-border-subtle hover:border-text-main px-4 py-3 rounded-xl shadow-sm transition-all"
-            title="Vérifier le profil officiel de Tobias sur Fiverr"
-          >
-            <div className="flex flex-col">
-              <span className="font-mono text-[9px] uppercase tracking-wider text-text-muted flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                FIVERR · PROFIL VÉRIFIÉ
-              </span>
-              <span className="font-mono text-xs font-semibold text-text-main mt-0.5">
-                NOTE 5.0 ★ EXCELLENCE
-              </span>
-            </div>
-            <div className="w-8 h-8 rounded-full bg-bg-soft group-hover:bg-text-main group-hover:text-surface-2 flex items-center justify-center text-text-main transition-colors">
-              <ArrowUpRight className="w-4 h-4" />
-            </div>
-          </Link>
-        </div>
-      </div>
-
-      {/* Row 1 (Défilement continu vers la gauche) */}
-      <div className="relative w-full overflow-hidden py-3">
-        {/* Subtle gradient fades on edges */}
-        <div className="pointer-events-none absolute left-0 inset-y-0 w-16 md:w-32 bg-gradient-to-r from-bg to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 inset-y-0 w-16 md:w-32 bg-gradient-to-l from-bg to-transparent z-10" />
-
-        <div className="animate-marquee-left flex gap-5">
+      {/* Row 1: Smooth Infinite Marquee (Défilement continu vers la gauche) */}
+      <div className="mb-6">
+        <SmoothMarquee direction="left" speed={38} pauseOnHover={true} gap="20px" ariaLabel="Avis vérifiés ComeUp">
           {marquee1.map((t, idx) => (
             <div
               key={idx}
-              className="w-[310px] sm:w-[350px] md:w-[380px] bg-surface-2 border border-border-subtle rounded-xl overflow-hidden shadow-sm flex flex-col flex-none hover:border-border-strong hover:shadow-md transition-all"
+              onClick={() => setSelectedReview(t)}
+              className="group relative cursor-pointer w-[310px] sm:w-[350px] md:w-[380px] bg-surface-2 border border-border-subtle rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:border-border-strong hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] transition-all flex flex-col flex-none select-none"
             >
               <div className="flex justify-between items-center px-4 py-2.5 border-b border-border-subtle bg-bg-soft/40">
                 <span className="font-mono text-[10px] font-semibold tracking-wider text-text-soft">
@@ -195,47 +228,45 @@ export function Testimonials() {
                 </span>
               </div>
 
-              {/* Review screenshot perfectly framed without cropping */}
+              {/* Review screenshot framed with zoom prompt on hover */}
               <div className="relative w-full h-[180px] sm:h-[195px] bg-white p-3 flex items-center justify-center overflow-hidden">
                 <Image
                   src={t.image}
                   alt={`Avis client ${t.author}`}
                   fill
                   sizes="(max-width: 768px) 310px, 380px"
-                  className="object-contain p-1"
+                  className="object-contain p-1.5 transition-transform duration-300 group-hover:scale-[1.02]"
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-white font-mono text-[10px] tracking-wider px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md">
+                    <Maximize2 className="w-3 h-3" />
+                    <span>Agrandir</span>
+                  </div>
+                </div>
               </div>
 
               <div className="px-4 py-3 flex justify-between items-center border-t border-border-subtle font-mono text-[10.5px]">
                 <span className="text-text-muted">
                   {t.author} · {t.date}
                 </span>
-                <Link
-                  href={t.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-accent hover:underline flex items-center gap-0.5"
-                >
-                  <span>VOIR</span>
+                <span className="font-semibold text-accent flex items-center gap-1">
+                  <span>DÉTAIL</span>
                   <ArrowUpRight className="w-3 h-3" />
-                </Link>
+                </span>
               </div>
             </div>
           ))}
-        </div>
+        </SmoothMarquee>
       </div>
 
-      {/* Row 2 (Défilement continu vers la droite) */}
-      <div className="relative w-full overflow-hidden py-3">
-        {/* Subtle gradient fades on edges */}
-        <div className="pointer-events-none absolute left-0 inset-y-0 w-16 md:w-32 bg-gradient-to-r from-bg to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 inset-y-0 w-16 md:w-32 bg-gradient-to-l from-bg to-transparent z-10" />
-
-        <div className="animate-marquee-right flex gap-5">
+      {/* Row 2: Smooth Infinite Marquee (Défilement continu vers la droite) */}
+      <div>
+        <SmoothMarquee direction="right" speed={42} pauseOnHover={true} gap="20px" ariaLabel="Avis vérifiés Fiverr">
           {marquee2.map((t, idx) => (
             <div
               key={idx}
-              className="w-[340px] sm:w-[420px] md:w-[480px] bg-surface-2 border border-border-subtle rounded-xl overflow-hidden shadow-sm flex flex-col flex-none hover:border-border-strong hover:shadow-md transition-all"
+              onClick={() => setSelectedReview(t)}
+              className="group relative cursor-pointer w-[340px] sm:w-[420px] md:w-[460px] bg-surface-2 border border-border-subtle rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:border-border-strong hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] transition-all flex flex-col flex-none select-none"
             >
               <div className="flex justify-between items-center px-4 py-2.5 border-b border-border-subtle bg-bg-soft/40">
                 <span className="font-mono text-[10px] font-semibold tracking-wider text-text-soft">
@@ -247,63 +278,110 @@ export function Testimonials() {
                 </span>
               </div>
 
-              {/* Wide panoramic Fiverr review screenshot perfectly fitted without cropping */}
-              <div className="relative w-full h-[110px] sm:h-[125px] bg-white p-3 flex items-center justify-center overflow-hidden">
+              {/* Panoramic review screenshot */}
+              <div className="relative w-full h-[180px] sm:h-[195px] bg-white p-3 flex items-center justify-center overflow-hidden">
                 <Image
                   src={t.image}
-                  alt={`Avis Fiverr ${t.author}`}
+                  alt={`Avis client ${t.author}`}
                   fill
-                  sizes="(max-width: 768px) 340px, 480px"
-                  className="object-contain p-1"
+                  sizes="(max-width: 768px) 340px, 460px"
+                  className="object-contain p-1.5 transition-transform duration-300 group-hover:scale-[1.02]"
                 />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-white font-mono text-[10px] tracking-wider px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-md">
+                    <Maximize2 className="w-3 h-3" />
+                    <span>Agrandir</span>
+                  </div>
+                </div>
               </div>
 
               <div className="px-4 py-3 flex justify-between items-center border-t border-border-subtle font-mono text-[10.5px]">
                 <span className="text-text-muted">
                   {t.author} · {t.date}
                 </span>
-                <Link
-                  href={t.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-semibold text-accent hover:underline flex items-center gap-0.5"
-                >
-                  <span>VOIR</span>
+                <span className="font-semibold text-accent flex items-center gap-1">
+                  <span>DÉTAIL</span>
                   <ArrowUpRight className="w-3 h-3" />
-                </Link>
+                </span>
               </div>
             </div>
           ))}
-        </div>
+        </SmoothMarquee>
       </div>
 
-      {/* Verification footer strip */}
-      <div className="max-w-[1440px] mx-auto px-6 md:px-10 mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-text-muted border-t border-border-subtle/60 pt-6">
-        <span className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span>Profils et avis publics vérifiables en direct sur les plateformes officielles :</span>
-        </span>
-        <div className="flex items-center gap-6">
-          <Link
-            href="https://comeup.com/fr/@tobias-06"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-text-main hover:text-accent font-semibold transition-colors flex items-center gap-1"
+      {/* Review Zoom Modal (Lightbox) */}
+      <AnimatePresence>
+        {selectedReview && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setSelectedReview(null)}
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md p-4 sm:p-6 md:p-10 flex items-center justify-center"
           >
-            <span>VOIR COMEUP</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
-          <Link
-            href="https://fr.fiverr.com/s/RVraW78"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-text-main hover:text-accent font-semibold transition-colors flex items-center gap-1"
-          >
-            <span>VOIR FIVERR</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-      </div>
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 16 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.96, opacity: 0, y: 12 }}
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-4xl bg-surface-2 border border-border-strong rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+            >
+              {/* Modal Top Bar */}
+              <div className="flex items-center justify-between px-6 py-4 border-b border-border-subtle bg-bg-soft/50">
+                <div className="flex items-center gap-3">
+                  <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-text-main text-white">
+                    {selectedReview.platform}
+                  </span>
+                  <span className="font-mono text-xs text-text-muted">
+                    {selectedReview.author} · {selectedReview.date}
+                  </span>
+                  <span className="flex items-center gap-1 font-mono text-xs font-semibold text-accent">
+                    <Star className="w-3.5 h-3.5 fill-accent stroke-accent" />
+                    {selectedReview.rating}
+                  </span>
+                </div>
+
+                <button
+                  onClick={() => setSelectedReview(null)}
+                  className="w-8 h-8 rounded-full border border-border-strong bg-white hover:bg-bg-soft flex items-center justify-center text-text-main transition-colors"
+                  aria-label="Fermer la vue agrandie"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Review High-Res Image Display */}
+              <div className="relative flex-1 min-h-[260px] sm:min-h-[380px] md:min-h-[460px] bg-white p-4 sm:p-6 flex items-center justify-center overflow-auto">
+                <Image
+                  src={selectedReview.image}
+                  alt={`Avis complet de ${selectedReview.author}`}
+                  width={1200}
+                  height={800}
+                  className="max-h-[65vh] w-auto object-contain rounded-lg border border-border-subtle shadow-sm"
+                />
+              </div>
+
+              {/* Modal Footer with Direct Verification Link */}
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-4 border-t border-border-subtle bg-bg-soft/30">
+                <p className="text-xs text-text-muted font-mono">
+                  Capture d&apos;écran issue directement de la plateforme officielle certifiée.
+                </p>
+                <Link
+                  href={selectedReview.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-text-main text-surface-2 font-mono text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-black/85 transition-colors shadow-sm"
+                >
+                  <span>VÉRIFIER LE PROFIL EN DIRECT</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

@@ -1,4 +1,8 @@
+'use client';
+
 import { Layers, Square, Grid, Triangle, ArrowUpRight } from 'lucide-react';
+import { SpringCard } from '@/components/motion/SpringCard';
+import { RevealOnScroll } from '@/components/motion/RevealOnScroll';
 
 const services = [
   {
@@ -45,25 +49,27 @@ export function ExpertisesAndProcess() {
   return (
     <section
       id="expertises"
-      className="max-w-[1440px] mx-auto border-t border-border-subtle grid grid-cols-1 lg:grid-cols-[1fr_380px] items-stretch"
+      className="max-w-[1440px] mx-auto border-t border-border-subtle grid grid-cols-1 lg:grid-cols-[1fr_390px] items-stretch"
     >
       {/* Expertises Column */}
-      <div className="p-6 md:p-12 lg:p-16">
-        <div className="flex items-center gap-3 font-mono text-[11px] tracking-widest text-text-muted mb-12">
+      <RevealOnScroll direction="up" distance={20} className="p-6 md:p-12 lg:p-16">
+        <div className="flex items-center gap-3 font-mono text-[11px] tracking-widest text-text-muted mb-10">
           <span>EXPERTISES</span>
           <span className="text-border-strong">/</span>
           <span className="text-text-main font-semibold">03</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
-              <div
+              <SpringCard
                 key={i}
-                className="group flex flex-col p-6 rounded-xl bg-surface/50 border border-border-subtle hover:border-text-main/20 hover:bg-surface-2 transition-all duration-300"
+                hoverLift={-3}
+                hoverScale={1.008}
+                className="group flex flex-col p-6 rounded-2xl bg-surface-2 border border-border-subtle hover:border-border-strong shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] transition-shadow duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-bg-soft flex items-center justify-center text-text-main mb-6 group-hover:text-accent transition-colors">
+                <div className="w-10 h-10 rounded-xl bg-bg-soft flex items-center justify-center text-text-main mb-6 group-hover:bg-accent/10 group-hover:text-accent transition-colors">
                   <Icon className="w-5 h-5 stroke-[1.5]" />
                 </div>
                 <h3 className="font-mono text-xs font-semibold tracking-wider text-text-main mb-3">
@@ -72,16 +78,16 @@ export function ExpertisesAndProcess() {
                 <p className="text-xs md:text-[13px] leading-relaxed text-text-soft flex-1 mb-6">
                   {s.desc}
                 </p>
-                <div className="flex justify-end pt-2 border-t border-border-subtle/50">
-                  <div className="w-7 h-7 rounded-full border border-border-strong flex items-center justify-center text-xs text-text-main group-hover:bg-text-main group-hover:text-surface-2 group-hover:border-text-main transition-all">
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                <div className="flex justify-end pt-3 border-t border-border-subtle/50">
+                  <div className="w-7 h-7 rounded-full border border-border-strong flex items-center justify-center text-xs text-text-main group-hover:bg-text-main group-hover:text-surface-2 group-hover:border-text-main transition-colors">
+                    <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </div>
                 </div>
-              </div>
+              </SpringCard>
             );
           })}
         </div>
-      </div>
+      </RevealOnScroll>
 
       {/* Dark Process Methodology Column */}
       <div className="bg-text-main text-surface-2 p-8 md:p-12 lg:p-14 flex flex-col justify-between">
@@ -91,7 +97,7 @@ export function ExpertisesAndProcess() {
             <span className="text-white/80 font-semibold">04</span>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {steps.map((st, idx) => (
               <div
                 key={idx}
@@ -101,10 +107,10 @@ export function ExpertisesAndProcess() {
                   {st.n}
                 </div>
                 <div>
-                  <h4 className="text-base font-semibold text-white mb-2">
+                  <h4 className="font-display text-base font-medium text-white mb-2">
                     {st.title}
                   </h4>
-                  <p className="text-xs md:text-[13px] leading-relaxed text-white/70">
+                  <p className="text-xs leading-relaxed text-white/60">
                     {st.desc}
                   </p>
                 </div>
@@ -114,12 +120,11 @@ export function ExpertisesAndProcess() {
         </div>
 
         <div className="pt-10 mt-10 border-t border-white/10">
-          <div className="font-mono text-[10.5px] tracking-wider text-white/50 mb-2">
-            ENGAGEMENT QUALITÉ
+          <div className="font-mono text-[10.5px] tracking-wider text-white/40 mb-2">
+            ENGAGEMENT
           </div>
-          <p className="text-xs text-white/80 leading-snug">
-            Chaque livrable est documenté, testé et remis avec un transfert de
-            compétences complet.
+          <p className="text-xs text-white/80 leading-relaxed">
+            Points de validation continus. Aucune mauvaise surprise à la livraison.
           </p>
         </div>
       </div>

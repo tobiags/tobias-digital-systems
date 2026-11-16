@@ -1,5 +1,10 @@
+'use client';
+
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight, Play, GitBranch } from 'lucide-react';
+import { SpringCard } from '@/components/motion/SpringCard';
+import { RevealOnScroll } from '@/components/motion/RevealOnScroll';
 
 const repos = [
   {
@@ -78,177 +83,204 @@ export function GithubAndDemos() {
       {/* GITHUB & CODE EN PRODUCTION */}
       <section
         id="code"
-        className="max-w-[1440px] mx-auto px-6 md:px-10 py-16 md:py-24 border-t border-border-subtle bg-text-main text-surface-2"
+        className="max-w-[1440px] mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-border-subtle bg-text-main text-surface-2"
       >
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
-          <div>
-            <div className="font-mono text-[11px] tracking-widest text-white/50 mb-3">
-              CODE & SYSTÈMES · 09
+        <RevealOnScroll direction="up" distance={20}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14 md:mb-16">
+            <div>
+              <div className="font-mono text-[11px] tracking-widest text-white/50 mb-3 uppercase">
+                CODE &amp; SYSTÈMES · 09
+              </div>
+              <h2 className="font-display font-medium text-2xl md:text-3xl lg:text-4xl tracking-tight text-white max-w-[24ch]">
+                Des expérimentations techniques aux solutions utilisées en
+                production.
+              </h2>
             </div>
-            <h2 className="font-display font-normal text-2xl md:text-3xl lg:text-4xl tracking-tight text-white max-w-[24ch]">
-              Des expérimentations techniques aux solutions utilisées en
-              production.
-            </h2>
+
+            <div className="flex gap-8 md:gap-12 flex-wrap">
+              {githubStats.map((g, idx) => (
+                <div key={idx}>
+                  <div className="font-display text-2xl md:text-3xl font-medium text-white mb-1">
+                    {g.value}
+                  </div>
+                  <div className="font-mono text-[10px] tracking-wider text-white/50 max-w-[14ch]">
+                    {g.label}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="flex gap-8 md:gap-12 flex-wrap">
-            {githubStats.map((g, idx) => (
-              <div key={idx}>
-                <div className="font-display text-2xl md:text-3xl font-normal text-white mb-1">
-                  {g.value}
+          {/* Repos Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {repos.map((r, idx) => (
+              <SpringCard
+                key={idx}
+                hoverLift={-3}
+                hoverScale={1.008}
+                className="bg-[#1b1c1e] border border-white/10 rounded-2xl p-6 sm:p-7 flex flex-col justify-between hover:border-white/25 transition-all shadow-[0_4px_20px_rgba(0,0,0,0.25)]"
+              >
+                <div>
+                  <div className="flex items-center gap-2 mb-4 text-white/50">
+                    <GitBranch className="w-3.5 h-3.5" />
+                    <span className="font-mono text-[10.5px]">tobiags / {r.name}</span>
+                  </div>
+                  <h3 className="font-mono text-sm font-semibold text-white mb-2">
+                    {r.name}
+                  </h3>
+                  <p className="text-xs text-white/70 leading-relaxed mb-4">
+                    {r.desc}
+                  </p>
+                  <div className="font-mono text-[10px] tracking-wider text-accent mb-6">
+                    {r.stack}
+                  </div>
                 </div>
-                <div className="font-mono text-[10px] tracking-wider text-white/50 max-w-[14ch]">
-                  {g.label}
+
+                <div className="pt-4 border-t border-white/10">
+                  <Link
+                    href={r.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center gap-2 bg-surface-2 text-text-main text-xs font-semibold py-2.5 rounded-xl hover:bg-white/90 transition-colors"
+                  >
+                    <span>VOIR LE CODE</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
                 </div>
-              </div>
+              </SpringCard>
             ))}
           </div>
-        </div>
 
-        {/* Repos Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {repos.map((r, idx) => (
-            <div
-              key={idx}
-              className="bg-[#1b1c1e] border border-white/10 rounded-xl p-6 flex flex-col justify-between hover:border-white/20 transition-all"
-            >
-              <div>
-                <div className="flex items-center gap-2 mb-4 text-white/50">
-                  <GitBranch className="w-3.5 h-3.5" />
-                  <span className="font-mono text-[10.5px]">tobiags / {r.name}</span>
-                </div>
-                <h3 className="font-mono text-sm font-semibold text-white mb-2">
-                  {r.name}
-                </h3>
-                <p className="text-xs text-white/70 leading-relaxed mb-4">
-                  {r.desc}
-                </p>
-                <div className="font-mono text-[10px] tracking-wider text-accent mb-6">
-                  {r.stack}
-                </div>
-              </div>
-
-              <div className="flex gap-3 pt-4 border-t border-white/10">
-                <Link
-                  href={r.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 bg-surface-2 text-text-main text-xs font-semibold py-2 rounded-md hover:opacity-90 transition-opacity"
-                >
-                  <span>VOIR LE CODE</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
+          {/* Contributions Heatmap */}
+          <div className="mt-16 pt-8 border-t border-white/10">
+            <div className="font-mono text-[10.5px] tracking-wider text-white/50 mb-4">
+              ACTIVITÉ GITHUB — RYTHME DE LIVRAISON CONTINU
             </div>
-          ))}
-        </div>
-
-        {/* Contributions Heatmap */}
-        <div className="mt-14 pt-8 border-t border-white/10">
-          <div className="font-mono text-[10.5px] tracking-wider text-white/50 mb-4">
-            ACTIVITÉ GITHUB — RYTHME DE LIVRAISON CONTINU
+            <div className="flex gap-1 overflow-x-auto pb-4 no-scrollbar">
+              {ghWeeks.map((w, wi) => (
+                <div key={wi} className="flex flex-col gap-1 flex-none">
+                  {w.map((color, di) => (
+                    <div
+                      key={di}
+                      className="w-2.5 h-2.5 rounded-[2px]"
+                      style={{ backgroundColor: color }}
+                    />
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="flex gap-1 overflow-x-auto pb-4 no-scrollbar">
-            {ghWeeks.map((w, wi) => (
-              <div key={wi} className="flex flex-col gap-1 flex-none">
-                {w.map((color, di) => (
-                  <div
-                    key={di}
-                    className="w-2.5 h-2.5 rounded-[2px]"
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
+        </RevealOnScroll>
       </section>
 
       {/* DÉMONSTRATIONS VIDÉO & YOUTUBE */}
       <section
         id="demos"
-        className="max-w-[1440px] mx-auto px-6 md:px-10 py-16 md:py-24 border-t border-border-subtle"
+        className="max-w-[1440px] mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-border-subtle"
       >
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <div className="font-mono text-[11px] tracking-widest text-text-muted mb-3">
-              DÉMONSTRATIONS · 10
-            </div>
-            <h2 className="font-display font-normal text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[26ch]">
-              Voir les systèmes fonctionner, pas seulement en lire la
-              description.
-            </h2>
-          </div>
-          <Link
-            href="https://www.youtube.com/@tobiasagossou4193"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost self-start md:self-auto"
-          >
-            <span>CHAÎNE YOUTUBE</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6 items-stretch">
-          {/* Main Showcase Video */}
-          <Link
-            href="https://youtu.be/MKkchd6Vvfk"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative rounded-xl overflow-hidden min-h-[340px] md:min-h-[420px] bg-black flex items-center justify-center p-8 border border-border-subtle"
-          >
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/50 z-10" />
-            <div className="relative z-20 text-center flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-surface-2 text-text-main flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform mb-4">
-                <Play className="w-6 h-6 fill-current ml-1" />
+        <RevealOnScroll direction="up" distance={20}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div>
+              <div className="font-mono text-[11px] tracking-widest text-text-muted mb-3 uppercase">
+                DÉMONSTRATIONS · 10
               </div>
-              <h3 className="text-white font-semibold text-lg md:text-xl mb-1">
-                Démonstration complète — Pipeline & Architecture
-              </h3>
-              <p className="font-mono text-xs text-white/70">
-                Next.js · Stripe · n8n · Fastify
-              </p>
+              <h2 className="font-display font-medium text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[26ch]">
+                Voir les systèmes fonctionner, pas seulement en lire la
+                description.
+              </h2>
             </div>
-          </Link>
-
-          {/* Secondary Video Cards */}
-          <div className="flex flex-col gap-6">
             <Link
-              href="https://youtu.be/NLGJCEhI8BA"
+              href="https://www.youtube.com/@tobiasagossou4193"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-xl overflow-hidden flex-1 min-h-[180px] bg-black flex items-center justify-center p-6 border border-border-subtle"
+              className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-wider px-5 py-2.5 rounded-full border border-border-strong text-text-main hover:bg-surface-2 hover:border-text-main transition-all active:scale-[0.98] self-start md:self-auto"
             >
-              <div className="absolute inset-0 bg-black/60 z-10" />
+              <span>CHAÎNE YOUTUBE OFFICIELLE</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6 items-stretch">
+            {/* Main Showcase Video */}
+            <Link
+              href="https://youtu.be/MKkchd6Vvfk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative rounded-2xl overflow-hidden min-h-[340px] md:min-h-[420px] bg-black flex items-center justify-center p-8 border border-border-subtle shadow-md"
+            >
+              <div
+                className="absolute inset-0 bg-cover bg-center opacity-70 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
+                style={{
+                  backgroundImage:
+                    "url('https://img.youtube.com/vi/MKkchd6Vvfk/maxresdefault.jpg')",
+                }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/30 z-10" />
               <div className="relative z-20 text-center flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full bg-surface-2 text-text-main flex items-center justify-center shadow-md group-hover:scale-110 transition-transform mb-2">
-                  <Play className="w-5 h-5 fill-current ml-0.5" />
+                <div className="w-16 h-16 rounded-full bg-surface-2 text-text-main flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform mb-4">
+                  <Play className="w-6 h-6 fill-current ml-1" />
                 </div>
-                <h4 className="text-white font-semibold text-sm">
-                  Retour d&apos;expérience & Témoignage client
-                </h4>
+                <h3 className="text-white font-display text-xl sm:text-2xl font-medium mb-2">
+                  Démonstration complète — Pipeline &amp; Architecture
+                </h3>
+                <p className="font-mono text-xs text-white/80">
+                  Next.js · Stripe · n8n · Fastify · 6:42
+                </p>
               </div>
             </Link>
 
-            <Link
-              href="https://youtu.be/uJdsTT6JYE0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative rounded-xl overflow-hidden flex-1 min-h-[180px] bg-black flex items-center justify-center p-6 border border-border-subtle"
-            >
-              <div className="absolute inset-0 bg-black/60 z-10" />
-              <div className="relative z-20 text-center flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full bg-surface-2 text-text-main flex items-center justify-center shadow-md group-hover:scale-110 transition-transform mb-2">
-                  <Play className="w-5 h-5 fill-current ml-0.5" />
+            {/* Secondary Video Cards */}
+            <div className="flex flex-col gap-6">
+              <Link
+                href="https://youtu.be/NLGJCEhI8BA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative rounded-2xl overflow-hidden flex-1 min-h-[190px] bg-black flex items-center justify-center p-6 border border-border-subtle shadow-md"
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-65 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500"
+                  style={{
+                    backgroundImage:
+                      "url('https://img.youtube.com/vi/NLGJCEhI8BA/maxresdefault.jpg')",
+                  }}
+                />
+                <div className="absolute inset-0 bg-black/60 z-10" />
+                <div className="relative z-20 text-center flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-full bg-surface-2 text-text-main flex items-center justify-center shadow-md group-hover:scale-110 transition-transform mb-2">
+                    <Play className="w-5 h-5 fill-current ml-0.5" />
+                  </div>
+                  <h4 className="text-white font-medium text-sm sm:text-base font-display">
+                    Retour d&apos;expérience &amp; Témoignage client
+                  </h4>
                 </div>
-                <h4 className="text-white font-semibold text-sm">
-                  Coulisses techniques du système
-                </h4>
-              </div>
-            </Link>
+              </Link>
+
+              <Link
+                href="https://youtu.be/uJdsTT6JYE0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative rounded-2xl overflow-hidden flex-1 min-h-[190px] bg-black flex items-center justify-center p-6 border border-border-subtle shadow-md"
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center opacity-65 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500"
+                  style={{
+                    backgroundImage:
+                      "url('https://img.youtube.com/vi/uJdsTT6JYE0/maxresdefault.jpg')",
+                  }}
+                />
+                <div className="absolute inset-0 bg-black/60 z-10" />
+                <div className="relative z-20 text-center flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-full bg-surface-2 text-text-main flex items-center justify-center shadow-md group-hover:scale-110 transition-transform mb-2">
+                    <Play className="w-5 h-5 fill-current ml-0.5" />
+                  </div>
+                  <h4 className="text-white font-medium text-sm sm:text-base font-display">
+                    Coulisses techniques du système
+                  </h4>
+                </div>
+              </Link>
+            </div>
           </div>
-        </div>
+        </RevealOnScroll>
       </section>
     </>
   );

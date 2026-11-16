@@ -17,31 +17,31 @@ export function Footer() {
   };
 
   return (
-    <footer className="max-w-[1440px] mx-auto px-6 md:px-10 py-8 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between gap-6">
+    <footer className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between gap-8">
       {/* Brand & Dynamic Automated Copyright */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-5">
         <Link
           href="/"
-          className="transition-opacity hover:opacity-85"
+          className="transition-opacity hover:opacity-85 active:scale-[0.98]"
           aria-label="Tobias Agossou — Accueil"
         >
           <Image
             src="/images/logo.png"
-            alt="Tobias Agossou"
-            width={120}
-            height={80}
-            className="h-9 md:h-10 w-auto object-contain"
+            alt="Tobias Agossou — Digital Systems Studio"
+            width={140}
+            height={93}
+            className="h-10 md:h-11 w-auto object-contain"
           />
         </Link>
         <div className="font-mono text-[10.5px] text-text-muted leading-relaxed border-l border-border-subtle pl-4">
           © {currentYear} TOBIAS AGOSSOU
           <br />
-          DIGITAL SYSTEMS STUDIO
+          <span className="text-text-soft">DIGITAL SYSTEMS STUDIO</span>
         </div>
       </div>
 
-      {/* Social Links */}
-      <div className="flex items-center gap-6 font-mono text-xs tracking-wider text-text-main">
+      {/* Verified Platforms & Social Links */}
+      <div className="flex flex-wrap items-center justify-center gap-6 font-mono text-xs tracking-wider text-text-main">
         <Link
           href="https://github.com/tobiags"
           target="_blank"
@@ -54,17 +54,19 @@ export function Footer() {
           href="https://comeup.com/fr/@tobias-06"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-accent transition-colors"
+          className="hover:text-accent transition-colors flex items-center gap-1"
+          title="Profil officiel ComeUp avec 508+ avis"
         >
-          COMEUP
+          <span>COMEUP (508+)</span>
         </Link>
         <Link
           href="https://fr.fiverr.com/s/RVraW78"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-accent transition-colors"
+          className="hover:text-accent transition-colors flex items-center gap-1"
+          title="Profil officiel Fiverr noté 5.0"
         >
-          FIVERR
+          <span>FIVERR (5.0 ★)</span>
         </Link>
         <Link
           href="https://www.youtube.com/@tobiasagossou4193"
@@ -103,8 +105,8 @@ export function Footer() {
 
         <button
           onClick={scrollToTop}
-          aria-label="Retour en haut"
-          className="w-9 h-9 rounded-full border border-border-strong bg-surface-2 flex items-center justify-center text-text-main hover:bg-bg-soft hover:border-text-main transition-all"
+          aria-label="Retour en haut de page"
+          className="w-10 h-10 rounded-full border border-border-strong bg-surface-2 flex items-center justify-center text-text-main hover:bg-bg-soft hover:border-text-main transition-all active:scale-95 shadow-sm"
         >
           <ArrowUp className="w-4 h-4" />
         </button>

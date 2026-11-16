@@ -1,5 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
+import { SpringCard } from '@/components/motion/SpringCard';
+import { RevealOnScroll } from '@/components/motion/RevealOnScroll';
 
 const projects = [
   {
@@ -43,9 +47,9 @@ const outcomes = [
     desc: 'Moins d’allers-retours, suppression des goulots d’étranglement sur toute la chaîne de travail.',
   },
   {
-    value: '508',
+    value: '508+',
     label: 'Missions livrées',
-    desc: 'Depuis 2021 sur ComeUp, Fiverr et en direct, avec plus de 400 avis 5 étoiles vérifiés.',
+    desc: 'Depuis 2021 sur ComeUp, Fiverr et en direct, avec plus de 508 avis 5 étoiles vérifiés.',
   },
   {
     value: '5h',
@@ -70,113 +74,118 @@ export function Realizations() {
       {/* RÉALISATIONS SÉLECTIONNÉES */}
       <section
         id="projects"
-        className="max-w-[1440px] mx-auto px-6 md:px-10 py-16 md:py-24 border-t border-border-subtle"
+        className="max-w-[1440px] mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-border-subtle"
       >
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-          <div>
-            <div className="font-mono text-[11px] tracking-widest text-text-muted mb-4">
-              RÉALISATIONS · 05
-            </div>
-            <h2 className="font-display font-normal text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[22ch]">
-              Des systèmes qui fonctionnent. Des résultats mesurables.
-            </h2>
-          </div>
-          <Link
-            href="https://github.com/tobiags"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-ghost self-start md:self-auto"
-          >
-            <span>VOIR TOUS LES PROJETS</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {projects.map((p, idx) => (
-            <div
-              key={idx}
-              className="group flex flex-col bg-surface-2 border border-border-subtle rounded-xl overflow-hidden hover:border-border-strong hover:shadow-lg transition-all duration-300"
-            >
-              <div className="p-6 md:p-8 flex justify-between items-start">
-                <span className="font-mono text-[10px] tracking-wider font-semibold px-2.5 py-1 rounded bg-accent/10 text-accent">
-                  {p.tag}
-                </span>
-                <span className="font-mono text-[11px] text-text-muted">
-                  {p.year}
-                </span>
+        <RevealOnScroll direction="up" distance={20}>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
+            <div>
+              <div className="font-mono text-[11px] tracking-widest text-text-muted mb-4 uppercase">
+                RÉALISATIONS · 05
               </div>
+              <h2 className="font-display font-medium text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[22ch]">
+                Des systèmes qui fonctionnent. Des résultats mesurables.
+              </h2>
+            </div>
+            <Link
+              href="https://github.com/tobiags"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-wider px-5 py-2.5 rounded-full border border-border-strong text-text-main hover:bg-surface-2 hover:border-text-main transition-all active:scale-[0.98] self-start md:self-auto"
+            >
+              <span>VOIR TOUS LES PROJETS SUR GITHUB</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
 
-              <div className="px-6 md:px-8 flex-1 flex flex-col">
-                <h3 className="font-display font-normal text-xl text-text-main mb-3 leading-snug">
-                  {p.name}
-                </h3>
-                <p className="text-xs md:text-[13px] leading-relaxed text-text-soft mb-6 flex-1">
-                  {p.desc}
-                </p>
-
-                <div className="flex items-center gap-2.5 p-3 rounded-lg bg-bg border border-border-subtle mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent flex-none" />
-                  <span className="text-xs font-semibold text-text-main">
-                    {p.result}
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 mb-20 md:mb-28">
+            {projects.map((p, idx) => (
+              <SpringCard
+                key={idx}
+                hoverLift={-4}
+                hoverScale={1.008}
+                className="group flex flex-col bg-surface-2 border border-border-subtle rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:shadow-[0_16px_36px_rgba(0,0,0,0.06)] hover:border-border-strong transition-all duration-300"
+              >
+                <div className="p-6 sm:p-7 pb-0 flex justify-between items-center">
+                  <span className="font-mono text-[10px] tracking-wider font-semibold px-2.5 py-1 rounded-md bg-accent-soft text-accent">
+                    {p.tag}
+                  </span>
+                  <span className="font-mono text-[11px] text-text-muted">
+                    {p.year}
                   </span>
                 </div>
 
-                <div className="font-mono text-[10.5px] text-text-muted tracking-wider mb-6">
-                  {p.stack}
+                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-display font-medium text-xl text-text-main mb-3">
+                      {p.name}
+                    </h3>
+                    <p className="text-xs md:text-[13px] leading-relaxed text-text-soft mb-6">
+                      {p.desc}
+                    </p>
+                  </div>
+
+                  <div>
+                    {/* Impact metric badge */}
+                    <div className="flex items-center gap-2 px-3.5 py-2 bg-bg rounded-lg border border-border-subtle/50 mb-5">
+                      <span className="w-2 h-2 rounded-full bg-accent flex-none animate-pulse" />
+                      <span className="font-mono text-xs font-semibold text-text-main">
+                        {p.result}
+                      </span>
+                    </div>
+
+                    <div className="font-mono text-[10.5px] text-text-muted tracking-wide mb-6">
+                      {p.stack}
+                    </div>
+
+                    <Link
+                      href={p.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-2 bg-text-main text-surface-2 text-xs font-semibold tracking-wider py-2.5 rounded-xl hover:bg-black/85 transition-colors"
+                    >
+                      <span>VOIR LE CODE</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-
-              <div className="px-6 md:px-8 pb-6">
-                <Link
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 bg-text-main text-surface-2 text-xs font-semibold py-2.5 rounded-md hover:bg-black/80 transition-colors"
-                >
-                  <span>VOIR LE CODE</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* RÉSULTATS / CE QUE ÇA CHANGE */}
-      <section className="max-w-[1440px] mx-auto px-6 md:px-10 py-16 md:py-24 border-t border-border-subtle">
-        <div className="mb-12">
-          <div className="font-mono text-[11px] tracking-widest text-text-muted mb-3">
-            CE QUE ÇA CHANGE · 06
+              </SpringCard>
+            ))}
           </div>
-          <h2 className="font-display font-normal text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[24ch]">
-            Concrètement, voilà ce que mes clients obtiennent.
-          </h2>
-        </div>
+        </RevealOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-border-subtle rounded-xl overflow-hidden divide-y md:divide-y-0 md:divide-x divide-border-subtle bg-surface-2">
-          {outcomes.map((o, idx) => (
-            <div
-              key={idx}
-              className={`p-8 md:p-10 flex flex-col justify-between ${
-                idx >= 3 ? 'lg:border-t border-border-subtle' : ''
-              }`}
-            >
-              <div>
-                <div className="font-display text-4xl md:text-5xl font-normal tracking-tight text-text-main mb-3 leading-none">
-                  {o.value}
+        {/* CE QUE ÇA CHANGE · OUTCOMES */}
+        <RevealOnScroll direction="up" distance={20}>
+          <div className="mb-10 md:mb-12">
+            <div className="font-mono text-[11px] tracking-widest text-text-muted mb-4 uppercase">
+              CE QUE ÇA CHANGE · 06
+            </div>
+            <h2 className="font-display font-medium text-2xl md:text-3xl lg:text-4xl tracking-tight text-text-main max-w-[22ch]">
+              Concrètement, voilà ce que mes clients obtiennent.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 border border-border-subtle rounded-2xl overflow-hidden bg-surface-2 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle shadow-sm">
+            {outcomes.map((o, i) => (
+              <div
+                key={i}
+                className="p-8 sm:p-9 flex flex-col justify-between hover:bg-surface/50 transition-colors"
+              >
+                <div>
+                  <div className="font-display text-4xl sm:text-5xl font-medium tracking-tight text-text-main mb-3 leading-none">
+                    {o.value}
+                  </div>
+                  <div className="font-mono text-xs font-semibold tracking-wider text-text-main mb-2 uppercase">
+                    {o.label}
+                  </div>
                 </div>
-                <div className="text-sm font-semibold text-text-main mb-2">
-                  {o.label}
-                </div>
-                <p className="text-xs md:text-[13px] leading-relaxed text-text-soft">
+                <p className="text-xs md:text-[13px] leading-relaxed text-text-soft mt-3">
                   {o.desc}
                 </p>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </RevealOnScroll>
       </section>
     </>
   );
