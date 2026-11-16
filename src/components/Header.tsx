@@ -89,15 +89,6 @@ export function Header() {
           {/* CTA & Switcher */}
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
-              href="/v2"
-              className="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border-strong text-text-muted hover:text-text-main font-mono text-[11px] transition-all hover:bg-surface-2 active:scale-[0.97]"
-              title="Consulter la variante V2 Studio"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>VARIANTE V2</span>
-            </Link>
-
-            <Link
               href="/#contact"
               className="group hidden sm:inline-flex items-center gap-2.5 bg-text-main text-surface-2 text-xs font-semibold tracking-wider pl-5 pr-2 py-2 rounded-full hover:bg-black/85 transition-all shadow-sm active:scale-[0.97]"
             >
@@ -162,23 +153,6 @@ export function Header() {
                   </motion.div>
                 ))}
 
-                <motion.div
-                  initial={{ opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3, duration: 0.25 }}
-                >
-                  <Link
-                    href="/v2"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between text-accent font-mono text-xs tracking-wider py-4 border-b border-border-subtle/50"
-                  >
-                    <span className="flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                      DÉCOUVRIR LA VARIANTE V2
-                    </span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </motion.div>
               </nav>
             </div>
 
