@@ -18,11 +18,10 @@ export function Footer() {
 
   return (
     <footer className="max-w-[1440px] mx-auto px-6 md:px-10 py-10 border-t border-border-subtle flex flex-col md:flex-row items-center justify-between gap-8">
-      {/* Brand & Dynamic Automated Copyright */}
       <div className="flex items-center gap-5">
         <Link
           href="/"
-          className="transition-opacity hover:opacity-85 active:scale-[0.98]"
+          className="transition-opacity hover:opacity-85 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg"
           aria-label="Tobias Agossou — Accueil"
         >
           <Image
@@ -40,13 +39,12 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Verified Platforms & Social Links */}
       <div className="flex flex-wrap items-center justify-center gap-6 font-mono text-xs tracking-wider text-text-main">
         <Link
           href="https://github.com/tobiags"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-accent transition-colors"
+          className="hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
         >
           GITHUB
         </Link>
@@ -54,7 +52,7 @@ export function Footer() {
           href="https://comeup.com/fr/@tobias-06"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-accent transition-colors flex items-center gap-1"
+          className="hover:text-accent transition-colors flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
           title="Profil officiel ComeUp avec 508+ avis"
         >
           <span>COMEUP (508+)</span>
@@ -63,7 +61,7 @@ export function Footer() {
           href="https://fr.fiverr.com/s/RVraW78"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-accent transition-colors flex items-center gap-1"
+          className="hover:text-accent transition-colors flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
           title="Profil officiel Fiverr noté 5.0"
         >
           <span>FIVERR (5.0 ★)</span>
@@ -72,34 +70,34 @@ export function Footer() {
           href="https://www.youtube.com/@tobiasagossou4193"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-accent transition-colors"
+          className="hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
         >
           YOUTUBE
         </Link>
       </div>
 
-      {/* Legal & Scroll Top */}
       <div className="flex items-center gap-6">
         <div className="flex items-center gap-3 font-mono text-[10.5px] text-text-muted">
           <Link
             href="/mentions-legales"
-            className="hover:text-text-main transition-colors underline-offset-4 hover:underline"
+            className="hover:text-text-main transition-colors underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
           >
             MENTIONS LÉGALES
           </Link>
           <span>·</span>
           <Link
             href="/confidentialite"
-            className="hover:text-text-main transition-colors underline-offset-4 hover:underline"
+            className="hover:text-text-main transition-colors underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
           >
             CONFIDENTIALITÉ
           </Link>
         </div>
 
         <button
+          type="button"
           onClick={scrollToTop}
           aria-label="Retour en haut de page"
-          className="w-10 h-10 rounded-full border border-border-strong bg-surface-2 flex items-center justify-center text-text-main hover:bg-bg-soft hover:border-text-main transition-all active:scale-95 shadow-sm"
+          className="w-10 h-10 rounded-full border border-border-strong bg-surface-2 flex items-center justify-center text-text-main hover:bg-bg-soft hover:border-text-main transition-all active:scale-95 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
         >
           <ArrowUp className="w-4 h-4" />
         </button>

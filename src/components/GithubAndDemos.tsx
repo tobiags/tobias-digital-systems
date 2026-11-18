@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowUpRight, Play, GitBranch } from 'lucide-react';
 import { SpringCard } from '@/components/motion/SpringCard';
 import { RevealOnScroll } from '@/components/motion/RevealOnScroll';
@@ -80,7 +79,6 @@ export function GithubAndDemos() {
 
   return (
     <>
-      {/* GITHUB & CODE EN PRODUCTION */}
       <section
         id="code"
         className="max-w-[1440px] mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-border-subtle bg-text-main text-surface-2"
@@ -111,7 +109,6 @@ export function GithubAndDemos() {
             </div>
           </div>
 
-          {/* Repos Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {repos.map((r, idx) => (
               <SpringCard
@@ -141,7 +138,7 @@ export function GithubAndDemos() {
                     href={r.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full flex items-center justify-center gap-2 bg-surface-2 text-text-main text-xs font-semibold py-2.5 rounded-xl hover:bg-white/90 transition-colors"
+                    className="w-full flex items-center justify-center gap-2 bg-surface-2 text-text-main text-xs font-semibold py-2.5 rounded-xl hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   >
                     <span>VOIR LE CODE</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -151,7 +148,6 @@ export function GithubAndDemos() {
             ))}
           </div>
 
-          {/* Contributions Heatmap */}
           <div className="mt-16 pt-8 border-t border-white/10">
             <div className="font-mono text-[10.5px] tracking-wider text-white/50 mb-4">
               ACTIVITÉ GITHUB — RYTHME DE LIVRAISON CONTINU
@@ -173,7 +169,6 @@ export function GithubAndDemos() {
         </RevealOnScroll>
       </section>
 
-      {/* DÉMONSTRATIONS VIDÉO & YOUTUBE */}
       <section
         id="demos"
         className="max-w-[1440px] mx-auto px-6 md:px-10 py-20 md:py-28 border-t border-border-subtle"
@@ -193,7 +188,7 @@ export function GithubAndDemos() {
               href="https://www.youtube.com/@tobiasagossou4193"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-wider px-5 py-2.5 rounded-full border border-border-strong text-text-main hover:bg-surface-2 hover:border-text-main transition-all active:scale-[0.98] self-start md:self-auto"
+              className="inline-flex items-center gap-2 font-mono text-xs font-semibold tracking-wider px-5 py-2.5 rounded-full border border-border-strong text-text-main hover:bg-surface-2 hover:border-text-main transition-all active:scale-[0.98] self-start md:self-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <span>CHAÎNE YOUTUBE OFFICIELLE</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -201,12 +196,11 @@ export function GithubAndDemos() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6 items-stretch">
-            {/* Main Showcase Video */}
             <Link
               href="https://youtu.be/MKkchd6Vvfk"
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-2xl overflow-hidden min-h-[340px] md:min-h-[420px] bg-black flex items-center justify-center p-8 border border-border-subtle shadow-md"
+              className="group relative rounded-2xl overflow-hidden min-h-[340px] md:min-h-[420px] bg-black flex items-center justify-center p-8 border border-border-subtle shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <div
                 className="absolute inset-0 bg-cover bg-center opacity-70 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
@@ -229,13 +223,12 @@ export function GithubAndDemos() {
               </div>
             </Link>
 
-            {/* Secondary Video Cards */}
             <div className="flex flex-col gap-6">
               <Link
                 href="https://youtu.be/NLGJCEhI8BA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative rounded-2xl overflow-hidden flex-1 min-h-[190px] bg-black flex items-center justify-center p-6 border border-border-subtle shadow-md"
+                className="group relative rounded-2xl overflow-hidden flex-1 min-h-[190px] bg-black flex items-center justify-center p-6 border border-border-subtle shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center opacity-65 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500"
@@ -259,7 +252,7 @@ export function GithubAndDemos() {
                 href="https://youtu.be/uJdsTT6JYE0"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative rounded-2xl overflow-hidden flex-1 min-h-[190px] bg-black flex items-center justify-center p-6 border border-border-subtle shadow-md"
+                className="group relative rounded-2xl overflow-hidden flex-1 min-h-[190px] bg-black flex items-center justify-center p-6 border border-border-subtle shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               >
                 <div
                   className="absolute inset-0 bg-cover bg-center opacity-65 group-hover:opacity-75 group-hover:scale-105 transition-all duration-500"

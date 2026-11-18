@@ -19,14 +19,12 @@ export function PhilosophyAndValues() {
     >
       <RevealOnScroll direction="up" distance={24} duration={0.65}>
         <div className="grid grid-cols-1 md:grid-cols-[100px_1fr_290px] gap-10 lg:gap-16 items-start">
-          {/* Left Column Label */}
           <div className="font-mono text-[11px] tracking-widest text-text-muted">
             PHILOSOPHIE
             <br />
             <span className="text-text-main font-semibold text-sm">01</span>
           </div>
 
-          {/* Center Philosophy Headline & Pitch */}
           <div className="flex flex-col">
             <div className="flex items-start gap-4 mb-6">
               <span className="font-display text-4xl md:text-5xl text-border-strong leading-none select-none">
@@ -46,7 +44,7 @@ export function PhilosophyAndValues() {
               </p>
               <Link
                 href="#contact"
-                className="group inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-text-main hover:text-accent transition-colors"
+                className="group inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-text-main hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm py-1"
               >
                 <span>ÉCHANGER SUR VOTRE PROJET</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -54,7 +52,6 @@ export function PhilosophyAndValues() {
             </div>
           </div>
 
-          {/* Right Values Double-Bezel Card */}
           <div className="bg-surface border border-border-subtle rounded-2xl p-6 shadow-sm">
             <div className="flex items-center justify-between font-mono text-[11px] tracking-widest text-text-muted pb-4 border-b border-border-subtle mb-2">
               <span>VALEURS</span>

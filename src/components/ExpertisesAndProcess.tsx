@@ -51,7 +51,6 @@ export function ExpertisesAndProcess() {
       id="expertises"
       className="max-w-[1440px] mx-auto border-t border-border-subtle grid grid-cols-1 lg:grid-cols-[1fr_390px] items-stretch"
     >
-      {/* Expertises Column */}
       <RevealOnScroll direction="up" distance={20} className="p-6 md:p-12 lg:p-16">
         <div className="flex items-center gap-3 font-mono text-[11px] tracking-widest text-text-muted mb-10">
           <span>EXPERTISES</span>
@@ -89,7 +88,6 @@ export function ExpertisesAndProcess() {
         </div>
       </RevealOnScroll>
 
-      {/* Dark Process Methodology Column */}
       <div className="bg-text-main text-surface-2 p-8 md:p-12 lg:p-14 flex flex-col justify-between">
         <div>
           <div className="flex items-center justify-between font-mono text-[11px] tracking-widest text-white/50 mb-10 pb-4 border-b border-white/10">

@@ -122,7 +122,6 @@ const row2: ReviewItem[] = [
 export function Testimonials() {
   const [selectedReview, setSelectedReview] = useState<ReviewItem | null>(null);
 
-  // Close modal on Escape key
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setSelectedReview(null);
@@ -162,13 +161,12 @@ export function Testimonials() {
             </p>
           </div>
 
-          {/* Boutons d'accès et de vérification directe des profils */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
             <Link
               href="https://comeup.com/fr/@tobias-06"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-5 bg-surface-2 hover:bg-white border border-border-subtle hover:border-text-main px-5 py-3.5 rounded-2xl shadow-sm transition-all active:scale-[0.98]"
+              className="group flex items-center justify-between gap-5 bg-surface-2 hover:bg-white border border-border-subtle hover:border-text-main px-5 py-3.5 rounded-2xl shadow-sm transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               title="Vérifier le profil officiel de Tobias sur ComeUp (508+ avis vérifiés)"
             >
               <div className="flex flex-col">
@@ -189,7 +187,7 @@ export function Testimonials() {
               href="https://fr.fiverr.com/s/RVraW78"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-5 bg-surface-2 hover:bg-white border border-border-subtle hover:border-text-main px-5 py-3.5 rounded-2xl shadow-sm transition-all active:scale-[0.98]"
+              className="group flex items-center justify-between gap-5 bg-surface-2 hover:bg-white border border-border-subtle hover:border-text-main px-5 py-3.5 rounded-2xl shadow-sm transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               title="Vérifier le profil officiel de Tobias sur Fiverr (Note 5.0)"
             >
               <div className="flex flex-col">
@@ -209,14 +207,16 @@ export function Testimonials() {
         </div>
       </RevealOnScroll>
 
-      {/* Row 1: Smooth Infinite Marquee (Défilement continu vers la gauche) */}
       <div className="mb-6">
         <SmoothMarquee direction="left" speed={38} pauseOnHover={true} gap="20px" ariaLabel="Avis vérifiés ComeUp">
           {marquee1.map((t, idx) => (
-            <div
+            <button
               key={idx}
+              type="button"
               onClick={() => setSelectedReview(t)}
-              className="group relative cursor-pointer w-[310px] sm:w-[350px] md:w-[380px] bg-surface-2 border border-border-subtle rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:border-border-strong hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] transition-all flex flex-col flex-none select-none"
+              aria-haspopup="dialog"
+              aria-label={`Agrandir l'avis vérifié de ${t.author} sur ${t.platform}`}
+              className="group relative text-left cursor-pointer w-[310px] sm:w-[350px] md:w-[380px] bg-surface-2 border border-border-subtle rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:border-border-strong hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] transition-all flex flex-col flex-none select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <div className="flex justify-between items-center px-4 py-2.5 border-b border-border-subtle bg-bg-soft/40">
                 <span className="font-mono text-[10px] font-semibold tracking-wider text-text-soft">
@@ -228,7 +228,6 @@ export function Testimonials() {
                 </span>
               </div>
 
-              {/* Review screenshot framed with zoom prompt on hover */}
               <div className="relative w-full h-[180px] sm:h-[195px] bg-white p-3 flex items-center justify-center overflow-hidden">
                 <Image
                   src={t.image}
@@ -254,31 +253,32 @@ export function Testimonials() {
                   <ArrowUpRight className="w-3 h-3" />
                 </span>
               </div>
-            </div>
+            </button>
           ))}
         </SmoothMarquee>
       </div>
 
-      {/* Row 2: Smooth Infinite Marquee (Défilement continu vers la droite) */}
       <div>
         <SmoothMarquee direction="right" speed={42} pauseOnHover={true} gap="20px" ariaLabel="Avis vérifiés Fiverr">
           {marquee2.map((t, idx) => (
-            <div
+            <button
               key={idx}
+              type="button"
               onClick={() => setSelectedReview(t)}
-              className="group relative cursor-pointer w-[340px] sm:w-[420px] md:w-[460px] bg-surface-2 border border-border-subtle rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:border-border-strong hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] transition-all flex flex-col flex-none select-none"
+              aria-haspopup="dialog"
+              aria-label={`Agrandir l'avis vérifié de ${t.author} sur ${t.platform}`}
+              className="group relative text-left cursor-pointer w-[340px] sm:w-[420px] md:w-[460px] bg-surface-2 border border-border-subtle rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.02)] hover:border-border-strong hover:shadow-[0_12px_28px_rgba(0,0,0,0.06)] transition-all flex flex-col flex-none select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             >
               <div className="flex justify-between items-center px-4 py-2.5 border-b border-border-subtle bg-bg-soft/40">
                 <span className="font-mono text-[10px] font-semibold tracking-wider text-text-soft">
                   {t.platform}
                 </span>
                 <span className="flex items-center gap-1 font-mono text-[11px] font-semibold text-accent">
-                  <Star className="w-3 h-3 fill-accent stroke-accent" />
+                  <Star className="w-3.5 h-3.5 fill-accent stroke-accent" />
                   {t.rating}
                 </span>
               </div>
 
-              {/* Panoramic review screenshot */}
               <div className="relative w-full h-[180px] sm:h-[195px] bg-white p-3 flex items-center justify-center overflow-hidden">
                 <Image
                   src={t.image}
@@ -304,12 +304,11 @@ export function Testimonials() {
                   <ArrowUpRight className="w-3 h-3" />
                 </span>
               </div>
-            </div>
+            </button>
           ))}
         </SmoothMarquee>
       </div>
 
-      {/* Review Zoom Modal (Lightbox) */}
       <AnimatePresence>
         {selectedReview && (
           <motion.div
@@ -321,6 +320,9 @@ export function Testimonials() {
             className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md p-4 sm:p-6 md:p-10 flex items-center justify-center"
           >
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="review-lightbox-title"
               initial={{ scale: 0.95, opacity: 0, y: 16 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.96, opacity: 0, y: 12 }}
@@ -328,7 +330,10 @@ export function Testimonials() {
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-4xl bg-surface-2 border border-border-strong rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
             >
-              {/* Modal Top Bar */}
+              <h3 id="review-lightbox-title" className="sr-only">
+                Avis certifié de {selectedReview.author} sur {selectedReview.platform}
+              </h3>
+
               <div className="flex items-center justify-between px-6 py-4 border-b border-border-subtle bg-bg-soft/50">
                 <div className="flex items-center gap-3">
                   <span className="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-text-main text-white">
@@ -344,15 +349,15 @@ export function Testimonials() {
                 </div>
 
                 <button
+                  type="button"
                   onClick={() => setSelectedReview(null)}
-                  className="w-8 h-8 rounded-full border border-border-strong bg-white hover:bg-bg-soft flex items-center justify-center text-text-main transition-colors"
+                  className="w-8 h-8 rounded-full border border-border-strong bg-white hover:bg-bg-soft flex items-center justify-center text-text-main transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                   aria-label="Fermer la vue agrandie"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
-              {/* Review High-Res Image Display */}
               <div className="relative flex-1 min-h-[260px] sm:min-h-[380px] md:min-h-[460px] bg-white p-4 sm:p-6 flex items-center justify-center overflow-auto">
                 <Image
                   src={selectedReview.image}
@@ -363,7 +368,6 @@ export function Testimonials() {
                 />
               </div>
 
-              {/* Modal Footer with Direct Verification Link */}
               <div className="flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-4 border-t border-border-subtle bg-bg-soft/30">
                 <p className="text-xs text-text-muted font-mono">
                   Capture d&apos;écran issue directement de la plateforme officielle certifiée.
@@ -372,7 +376,7 @@ export function Testimonials() {
                   href={selectedReview.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-text-main text-surface-2 font-mono text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-black/85 transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 bg-text-main text-surface-2 font-mono text-xs font-semibold px-5 py-2.5 rounded-full hover:bg-black/85 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
                 >
                   <span>VÉRIFIER LE PROFIL EN DIRECT</span>
                   <ExternalLink className="w-3.5 h-3.5" />

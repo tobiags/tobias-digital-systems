@@ -6,6 +6,14 @@ import Image from 'next/image';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const NAV_LINKS = [
+  { label: 'À PROPOS', href: '/#about' },
+  { label: 'EXPERTISES', href: '/#expertises' },
+  { label: 'RÉALISATIONS', href: '/#projects' },
+  { label: 'AVIS VÉRIFIÉS', href: '/#testimonials' },
+  { label: 'CODE & LAB', href: '/#code' },
+] as const;
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,7 +26,6 @@ export function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -30,14 +37,6 @@ export function Header() {
     };
   }, [mobileMenuOpen]);
 
-  const navLinks = [
-    { label: 'À PROPOS', href: '/#about' },
-    { label: 'EXPERTISES', href: '/#expertises' },
-    { label: 'RÉALISATIONS', href: '/#projects' },
-    { label: 'AVIS VÉRIFIÉS', href: '/#testimonials' },
-    { label: 'CODE & LAB', href: '/#code' },
-  ];
-
   return (
     <>
       <div
@@ -48,11 +47,10 @@ export function Header() {
         }`}
       >
         <header className="max-w-[1440px] mx-auto h-[84px] md:h-[92px] px-6 md:px-10 flex items-center justify-between">
-          {/* Brand Logo & Editorial Issue Badge */}
           <div className="flex items-center gap-5 sm:gap-6">
             <Link
               href="/"
-              className="flex items-center transition-transform hover:scale-[1.01] active:scale-[0.98] duration-200"
+              className="flex items-center transition-transform hover:scale-[1.01] active:scale-[0.98] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 rounded-lg"
               aria-label="Tobias Agossou — Digital Systems Studio"
             >
               <Image
@@ -64,21 +62,17 @@ export function Header() {
                 className="h-10 sm:h-11 md:h-12 w-auto object-contain"
               />
             </Link>
-
-            <div className="hidden lg:block font-mono text-[10.5px] tracking-[0.08em] text-text-muted leading-tight border-l border-border-subtle pl-4 select-none">
-              ISSUE 03
-              <br />
-              <span className="text-text-soft font-medium">ÉTÉ 2025 · STUDIO</span>
-            </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-7 lg:gap-9 text-[12px] font-medium tracking-wider text-text-main">
-            {navLinks.map((item) => (
+          <nav
+            aria-label="Navigation principale"
+            className="hidden md:flex items-center gap-7 lg:gap-9 text-[12px] font-medium tracking-wider text-text-main"
+          >
+            {NAV_LINKS.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="hover:text-accent transition-colors py-1 relative group"
+                className="hover:text-accent transition-colors py-1 relative group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
               >
                 <span>{item.label}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-accent transition-all duration-200 group-hover:w-full" />
@@ -86,11 +80,10 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA & Switcher */}
           <div className="flex items-center gap-3 sm:gap-4">
             <Link
               href="/#contact"
-              className="group hidden sm:inline-flex items-center gap-2.5 bg-text-main text-surface-2 text-xs font-semibold tracking-wider pl-5 pr-2 py-2 rounded-full hover:bg-black/85 transition-all shadow-sm active:scale-[0.97]"
+              className="group hidden sm:inline-flex items-center gap-2.5 bg-text-main text-surface-2 text-xs font-semibold tracking-wider pl-5 pr-2 py-2 rounded-full hover:bg-black/85 transition-all shadow-sm active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
             >
               <span>CONTACTER</span>
               <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
@@ -98,10 +91,12 @@ export function Header() {
               </div>
             </Link>
 
-            {/* Mobile Hamburger Button */}
             <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 text-text-main hover:bg-black/5 rounded-full transition-colors active:scale-95"
+              type="button"
+              onClick={() => setMobileMenuOpen((open) => !open)}
+              className="md:hidden p-2.5 text-text-main hover:bg-black/5 rounded-full transition-colors active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              aria-expanded={mobileMenuOpen}
+              aria-controls="mobile-drawer"
               aria-label={mobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -110,10 +105,13 @@ export function Header() {
         </header>
       </div>
 
-      {/* Mobile Drawer with Staggered Entrance */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            id="mobile-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu de navigation mobile"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -129,13 +127,10 @@ export function Header() {
                   height={93}
                   className="h-9 w-auto object-contain"
                 />
-                <span className="font-mono text-[10px] text-text-muted tracking-widest uppercase">
-                  ISSUE 03 · STUDIO
-                </span>
               </div>
 
-              <nav className="flex flex-col gap-2">
-                {navLinks.map((item, idx) => (
+              <nav aria-label="Liens de navigation mobile" className="flex flex-col gap-2">
+                {NAV_LINKS.map((item, idx) => (
                   <motion.div
                     key={item.href}
                     initial={{ opacity: 0, x: -12 }}
@@ -152,7 +147,6 @@ export function Header() {
                     </Link>
                   </motion.div>
                 ))}
-
               </nav>
             </div>
 

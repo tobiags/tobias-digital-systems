@@ -2,14 +2,13 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ArrowUpRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { SpringCard } from '@/components/motion/SpringCard';
 import { RevealOnScroll } from '@/components/motion/RevealOnScroll';
 
 export function Hero() {
   return (
     <section className="relative max-w-[1440px] mx-auto px-6 md:px-10 pt-6 pb-16 md:pt-12 md:pb-24 grid grid-cols-1 lg:grid-cols-[minmax(320px,460px)_1fr] gap-10 lg:gap-14 items-center overflow-hidden lg:overflow-visible">
-      {/* Hero Left Column */}
       <RevealOnScroll direction="up" distance={20} duration={0.65} className="flex flex-col min-w-0 z-10">
         <div className="font-mono text-[11px] tracking-[0.14em] text-text-muted mb-4 md:mb-5 uppercase">
           DIGITAL SYSTEMS STUDIO
@@ -34,11 +33,10 @@ export function Hero() {
           l&apos;humain.
         </p>
 
-        {/* CTA Buttons with Button-in-Button Trailing Icon */}
         <div className="flex flex-wrap items-center gap-3.5 mb-10 md:mb-14">
           <Link
             href="#about"
-            className="group inline-flex items-center gap-2.5 bg-text-main text-surface-2 text-xs font-semibold tracking-wider pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black/85 transition-all shadow-sm active:scale-[0.97]"
+            className="group inline-flex items-center gap-2.5 bg-text-main text-surface-2 text-xs font-semibold tracking-wider pl-6 pr-2.5 py-2.5 rounded-full hover:bg-black/85 transition-all shadow-sm active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <span>DÉCOUVRIR L&apos;APPROCHE</span>
             <div className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">
@@ -48,13 +46,12 @@ export function Hero() {
 
           <Link
             href="#projects"
-            className="inline-flex items-center justify-center gap-2 bg-transparent text-text-main text-xs font-semibold tracking-wider px-6 py-3 rounded-full border border-border-strong hover:bg-surface-2 hover:border-text-main transition-all active:scale-[0.97]"
+            className="inline-flex items-center justify-center gap-2 bg-transparent text-text-main text-xs font-semibold tracking-wider px-6 py-3 rounded-full border border-border-strong hover:bg-surface-2 hover:border-text-main transition-all active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
           >
             <span>VOIR LES RÉALISATIONS</span>
           </Link>
         </div>
 
-        {/* Core Stats Row (Exact ComeUp 508+ avis & 508 missions) */}
         <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-6 border-t border-border-subtle font-mono text-[10px] md:text-[11px] tracking-wider text-text-muted">
           <div>
             <div className="mb-1 text-[9px] sm:text-[9.5px]">AVIS VÉRIFIÉS</div>
@@ -62,7 +59,7 @@ export function Hero() {
               href="https://comeup.com/fr/@tobias-06"
               target="_blank"
               rel="noopener noreferrer"
-              className="group font-display text-2xl sm:text-3xl text-text-main font-medium tracking-tight hover:text-accent transition-colors flex items-center gap-1"
+              className="group font-display text-2xl sm:text-3xl text-text-main font-medium tracking-tight hover:text-accent transition-colors flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm"
               title="508+ avis vérifiés sur ComeUp & Fiverr"
             >
               <span>508+</span>
@@ -86,16 +83,11 @@ export function Hero() {
         </div>
       </RevealOnScroll>
 
-      {/* Hero Right: Architectural Canvas with Portrait & 6 Floating Drift Cards */}
       <div className="relative w-full aspect-[4/5] sm:aspect-[655/620] min-h-[460px] sm:min-h-[540px] md:min-h-[600px] flex items-center justify-center">
-        {/* Subtle Architectural Crosshair Grid Lines */}
         <div className="absolute inset-x-0 top-1/2 h-[1px] bg-border-subtle opacity-50" />
         <div className="absolute inset-y-0 left-1/2 w-[1px] bg-border-subtle opacity-50" />
-
-        {/* Backdrop Ambient Circle */}
         <div className="absolute w-[78%] sm:w-[60%] aspect-square rounded-full bg-bg-soft" />
 
-        {/* Center Portrait Image */}
         <div className="relative w-[70%] sm:w-[56%] h-[88%] sm:h-[94%] overflow-hidden rounded-t-2xl z-10 shadow-sm border border-border-subtle/60 bg-[#e8e4dc]">
           <Image
             src="/images/portrait-tobias.png"
@@ -107,7 +99,6 @@ export function Hero() {
           />
         </div>
 
-        {/* Monogram Stamp Badge */}
         <SpringCard
           drift="driftA"
           className="absolute right-[2%] sm:right-[5%] top-[26%] sm:top-[30%] w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-border-strong bg-surface-2 flex items-center justify-center p-2.5 shadow-md z-30"
@@ -121,7 +112,6 @@ export function Hero() {
           />
         </SpringCard>
 
-        {/* Floating Card 1: +10 Projets lancés (Top-Left) */}
         <SpringCard
           drift="driftA"
           className="hidden sm:block absolute left-[1%] lg:left-[2%] top-[3%] w-[160px] bg-surface-2 border border-border-subtle rounded-xl p-4 shadow-[0_12px_30px_rgba(0,0,0,0.06)] z-20"
@@ -136,7 +126,6 @@ export function Hero() {
           </div>
         </SpringCard>
 
-        {/* Floating Card 2: Design de Produit (Top-Right) */}
         <SpringCard
           drift="driftB"
           className="hidden sm:block absolute right-[2%] lg:right-[4%] top-[2%] w-[190px] bg-surface-2 border border-border-subtle rounded-xl p-4 shadow-[0_12px_30px_rgba(0,0,0,0.06)] z-20"
@@ -157,7 +146,6 @@ export function Hero() {
           </div>
         </SpringCard>
 
-        {/* Floating Card 3: Systèmes (Mid-Left) */}
         <SpringCard
           drift="driftB"
           className="hidden md:block absolute left-[0%] lg:left-[1%] top-[24%] w-[165px] bg-surface-2 border border-border-subtle rounded-xl p-3.5 shadow-[0_12px_30px_rgba(0,0,0,0.06)] z-20"
@@ -175,7 +163,6 @@ export function Hero() {
           </div>
         </SpringCard>
 
-        {/* Floating Card 4: Automatisation (Dark Card, Mid-Right) */}
         <SpringCard
           drift="driftA"
           className="hidden md:block absolute right-[1%] lg:right-[3%] top-[45%] w-[185px] bg-text-main text-surface-2 border border-black/20 rounded-xl p-3.5 shadow-[0_14px_34px_rgba(0,0,0,0.14)] z-20"
@@ -191,7 +178,6 @@ export function Hero() {
           </p>
         </SpringCard>
 
-        {/* Floating Card 5: Approche (Dark Card, Bottom-Left) */}
         <SpringCard
           drift="driftB"
           className="hidden sm:block absolute left-[2%] lg:left-[3%] bottom-[8%] w-[175px] bg-text-main text-surface-2 border border-black/20 rounded-xl p-3.5 shadow-[0_14px_34px_rgba(0,0,0,0.14)] z-20"
@@ -211,7 +197,6 @@ export function Hero() {
           </div>
         </SpringCard>
 
-        {/* Floating Card 6: Conseil (Bottom-Right) */}
         <SpringCard
           drift="driftA"
           className="hidden sm:block absolute right-[2%] lg:right-[5%] bottom-[4%] w-[175px] bg-surface-2 border border-border-subtle rounded-xl p-3.5 shadow-[0_12px_30px_rgba(0,0,0,0.06)] z-20"
