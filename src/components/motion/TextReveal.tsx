@@ -1,35 +1,28 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import { EASE_EDITORIAL } from "@/lib/motion";
-import { clsx } from "clsx";
+import { motion, useReducedMotion } from 'framer-motion';
+import { EASE_EDITORIAL } from '@/lib/motion';
+import { clsx } from 'clsx';
 
 export interface TextRevealProps {
   text: string;
-  as?: "h1" | "h2" | "h3" | "h4" | "p" | "span";
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span';
   delay?: number;
   stagger?: number;
   duration?: number;
   className?: string;
 }
 
-/**
- * TextReveal
- *
- * Signature luxury agency text entrance.
- * Words emerge from an overflow-hidden mask with editorial deceleration.
- */
 export function TextReveal({
   text,
-  as: Tag = "h2",
+  as: Tag = 'h2',
   delay = 0.1,
   stagger = 0.04,
   duration = 0.65,
   className,
 }: TextRevealProps) {
   const shouldReduceMotion = useReducedMotion();
-  const words = text.split(" ");
+  const words = text.split(' ');
 
   if (shouldReduceMotion) {
     return <Tag className={className}>{text}</Tag>;
@@ -48,11 +41,11 @@ export function TextReveal({
 
   const wordVariants = {
     hidden: {
-      y: "105%",
+      y: '105%',
       opacity: 0,
     },
     visible: {
-      y: "0%",
+      y: '0%',
       opacity: 1,
       transition: {
         duration,
@@ -62,12 +55,12 @@ export function TextReveal({
   };
 
   return (
-    <Tag className={clsx("inline-block", className)}>
+    <Tag className={clsx('inline-block', className)}>
       <motion.span
         className="inline-flex flex-wrap gap-x-[0.25em]"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-40px" }}
+        viewport={{ once: true, margin: '-40px' }}
         variants={containerVariants}
       >
         {words.map((word, i) => (

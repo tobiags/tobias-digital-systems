@@ -1,50 +1,42 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
-import { clsx } from "clsx";
-import { SPRINGS } from "@/lib/motion";
+import { useReducedMotion, motion, type HTMLMotionProps } from 'framer-motion';
+import { clsx } from 'clsx';
+import { SPRINGS } from '@/lib/motion';
 
 export interface SpringButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends Omit<HTMLMotionProps<'button'>, 'children'> {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "ghost";
+  variant?: 'primary' | 'secondary' | 'ghost';
   href?: string;
   target?: string;
   rel?: string;
   className?: string;
 }
 
-/**
- * SpringButton
- *
- * Tactile, reactive button applying Emil Kowalski's physics:
- * - Active: scale(0.97) for immediate tactile response
- * - Hover: -1.5px lift with snappy spring recovery
- * - Explicit transitions: zero "transition: all"
- */
 export function SpringButton({
   children,
-  variant = "primary",
+  variant = 'primary',
   href,
   target,
   rel,
   className,
+  type = 'button',
   ...props
 }: SpringButtonProps) {
   const shouldReduceMotion = useReducedMotion();
 
   const variantStyles = {
     primary:
-      "bg-[var(--text,#111111)] text-[var(--surface-2,#ffffff)] border border-[var(--text,#111111)] shadow-sm hover:opacity-90 hover:shadow-md",
+      'bg-text-main text-surface-2 border border-text-main shadow-sm hover:opacity-90 hover:shadow-md',
     secondary:
-      "bg-[var(--surface-2,#ffffff)] text-[var(--text,#111111)] border border-[var(--border-strong,rgba(17,17,17,0.18))] hover:bg-[var(--bg-soft,#f1ede7)]",
+      'bg-surface-2 text-text-main border border-border-strong hover:bg-bg-soft',
     ghost:
-      "bg-transparent text-[var(--text,#111111)] border border-[var(--border,rgba(17,17,17,0.10))] hover:border-[var(--text,#111111)] hover:bg-[var(--surface-2,#ffffff)]",
+      'bg-transparent text-text-main border border-border hover:border-text-main hover:bg-surface-2',
   };
 
   const sharedClasses = clsx(
-    "inline-flex items-center justify-center gap-2 font-mono text-[11.5px] font-semibold uppercase tracking-[0.05em] px-5 py-3 rounded-md transition-[background-color,border-color,opacity,box-shadow] duration-200 select-none cursor-pointer",
+    'inline-flex items-center justify-center gap-2 font-mono text-[11.5px] font-semibold uppercase tracking-[0.05em] px-5 py-3 rounded-md transition-[background-color,border-color,opacity,box-shadow] duration-200 select-none cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent',
     variantStyles[variant],
     className
   );
@@ -61,7 +53,7 @@ export function SpringButton({
       <motion.a
         href={href}
         target={target}
-        rel={target === "_blank" ? (rel || "noopener noreferrer") : rel}
+        rel={target === '_blank' ? (rel || 'noopener noreferrer') : rel}
         className={sharedClasses}
         {...motionProps}
       >
@@ -72,10 +64,10 @@ export function SpringButton({
 
   return (
     <motion.button
-      type={props.type || "button"}
+      type={type}
       className={sharedClasses}
       {...motionProps}
-      {...(props as any)}
+      {...props}
     >
       {children}
     </motion.button>

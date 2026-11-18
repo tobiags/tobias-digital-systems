@@ -5,7 +5,6 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { name, email, projectType, message } = body;
 
-    // Strict validation
     if (!name || typeof name !== 'string' || name.trim().length < 2) {
       return NextResponse.json(
         { error: 'Veuillez renseigner un nom valide (au moins 2 caractères).' },
@@ -27,7 +26,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // In a production backend, this would trigger an email / n8n webhook / database insertion
     const leadPayload = {
       id: `lead_${Date.now()}`,
       name: name.trim(),
@@ -45,7 +43,7 @@ export async function POST(request: Request) {
       },
       { status: 201 }
     );
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Une erreur interne est survenue lors de l’envoi.' },
       { status: 500 }

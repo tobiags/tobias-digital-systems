@@ -1,22 +1,16 @@
-"use client";
+'use client';
 
-import React from "react";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { EASE_EDITORIAL, TIMING } from "@/lib/motion";
-import { clsx } from "clsx";
+import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { EASE_EDITORIAL, TIMING } from '@/lib/motion';
+import { clsx } from 'clsx';
 
 export interface StaggerContainerProps {
   children: React.ReactNode;
-  /** Delay between each child animation (seconds) */
   staggerDelay?: number;
-  /** Delay before first child begins animating */
   delayChildren?: number;
-  /** Trigger animation only once */
   once?: boolean;
-  /** Viewport margin */
   margin?: string;
   className?: string;
-  as?: React.ElementType;
 }
 
 export function StaggerContainer({
@@ -24,7 +18,7 @@ export function StaggerContainer({
   staggerDelay = TIMING.staggerDefault,
   delayChildren = TIMING.staggerChildrenDelay,
   once = true,
-  margin = "-40px",
+  margin = '-40px',
   className,
 }: StaggerContainerProps) {
   const shouldReduceMotion = useReducedMotion();
@@ -42,10 +36,10 @@ export function StaggerContainer({
 
   return (
     <motion.div
-      className={clsx("w-full", className)}
+      className={clsx('w-full', className)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: margin as any }}
+      viewport={{ once, margin: margin as `${number}px` }}
       variants={containerVariants}
     >
       {children}
@@ -55,9 +49,7 @@ export function StaggerContainer({
 
 export interface StaggerItemProps {
   children: React.ReactNode;
-  /** Distance in pixels for translateY */
   distance?: number;
-  /** Duration in seconds */
   duration?: number;
   className?: string;
 }

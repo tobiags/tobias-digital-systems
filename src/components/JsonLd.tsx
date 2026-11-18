@@ -10,7 +10,7 @@ export function JsonLd() {
         image: 'https://www.tobiasagossou.website/images/portrait-tobias.png',
         url: 'https://www.tobiasagossou.website',
         description:
-          "Expert en architecture de systèmes numériques, product design et automatisation d'entreprises. 410+ avis vérifiés et 519 missions réussies.",
+          "Expert en architecture de systèmes numériques, product design et automatisation d'entreprises. 508+ avis vérifiés et 508 missions livrées.",
         sameAs: [
           'https://github.com/tobiags',
           'https://comeup.com/fr/@tobias-06',
@@ -36,7 +36,7 @@ export function JsonLd() {
           ratingValue: '5.0',
           bestRating: '5',
           worstRating: '1',
-          ratingCount: '410',
+          ratingCount: '508',
         },
       },
       {

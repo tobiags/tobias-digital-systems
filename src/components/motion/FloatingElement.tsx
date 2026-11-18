@@ -1,31 +1,20 @@
-"use client";
+'use client';
 
-import React, { useId } from "react";
-import { clsx } from "clsx";
+import { useId } from 'react';
+import { clsx } from 'clsx';
 
 export interface FloatingElementProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  /** Drift variation: "A" (drifts upward) or "B" (drifts downward) */
-  variant?: "A" | "B";
-  /** Drift distance in pixels (default: 7px) */
+  variant?: 'A' | 'B';
   distance?: number;
-  /** Full cycle duration in seconds (default: 8s) */
   duration?: number;
-  /** Pause animation when hovered */
   pauseOnHover?: boolean;
   className?: string;
 }
 
-/**
- * FloatingElement
- *
- * Ambient floating drift physics from Tobias's Framer website.
- * Runs 100% on the GPU compositor layer via CSS @keyframes.
- * Zero CPU overhead, zero layout shifts, perfectly buttery.
- */
 export function FloatingElement({
   children,
-  variant = "A",
+  variant = 'A',
   distance = 7,
   duration = 8,
   pauseOnHover = true,
@@ -33,9 +22,9 @@ export function FloatingElement({
   style,
   ...rest
 }: FloatingElementProps) {
-  const instanceId = useId().replace(/:/g, "");
+  const instanceId = useId().replace(/:/g, '');
   const animName = `drift-${variant}-${instanceId}`;
-  const signedDistance = variant === "A" ? -distance : distance;
+  const signedDistance = variant === 'A' ? -distance : distance;
 
   return (
     <div
@@ -58,7 +47,7 @@ export function FloatingElement({
                   animation-play-state: paused;
                 }
               }`
-            : ""
+            : ''
         }
         @media (prefers-reduced-motion: reduce) {
           .floating-${instanceId} {

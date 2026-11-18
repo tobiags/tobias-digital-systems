@@ -19,18 +19,16 @@ export default function ConfidentialitePage() {
       <Header />
 
       <main className="flex-1 max-w-[1000px] mx-auto px-6 md:px-10 py-12 md:py-20 w-full">
-        {/* Breadcrumb & Navigation */}
         <div className="mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 font-mono text-xs tracking-wider text-text-muted hover:text-accent transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs tracking-wider text-text-muted hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm py-1"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>RETOUR À L&apos;ACCUEIL</span>
           </Link>
         </div>
 
-        {/* Page Title */}
         <div className="border-b border-border-subtle pb-8 mb-12">
           <div className="flex items-center gap-2 font-mono text-xs tracking-widest text-text-muted uppercase mb-3">
             <Lock className="w-4 h-4 text-accent" />
@@ -44,9 +42,7 @@ export default function ConfidentialitePage() {
           </p>
         </div>
 
-        {/* Content Sections */}
         <div className="space-y-12 text-[15px] leading-relaxed text-text-soft">
-          {/* Section 1: Introduction & Engagement */}
           <section className="border-l-2 border-border-strong pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               1. Engagement et Principes Directeurs
@@ -61,7 +57,6 @@ export default function ConfidentialitePage() {
             </p>
           </section>
 
-          {/* Section 2: Responsable de traitement */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               2. Responsable du Traitement
@@ -82,7 +77,6 @@ export default function ConfidentialitePage() {
             </ul>
           </section>
 
-          {/* Section 3: Données collectées & Finalités */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               3. Données Collectées et Finalités
@@ -118,7 +112,6 @@ export default function ConfidentialitePage() {
             </div>
           </section>
 
-          {/* Section 4: Base légale */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               4. Base Légale du Traitement
@@ -139,7 +132,6 @@ export default function ConfidentialitePage() {
             </ul>
           </section>
 
-          {/* Section 5: Durée de conservation */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               5. Durée de Conservation des Données
@@ -160,7 +152,6 @@ export default function ConfidentialitePage() {
             </ul>
           </section>
 
-          {/* Section 6: Non-divulgation */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               6. Confidentialité et Non-Divulgation à des Tiers
@@ -175,7 +166,6 @@ export default function ConfidentialitePage() {
             </p>
           </section>
 
-          {/* Section 7: Cookies */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               7. Politique de Cookies et Traceurs
@@ -189,7 +179,6 @@ export default function ConfidentialitePage() {
             </p>
           </section>
 
-          {/* Section 8: Droits des utilisateurs */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               8. Vos Droits et Modalités d&apos;Exercice
@@ -209,7 +198,7 @@ export default function ConfidentialitePage() {
               Pour exercer l&apos;un de ces droits, vous pouvez adresser votre demande accompagnée d&apos;un justificatif d&apos;identité à :
             </p>
             <div className="font-mono text-xs bg-surface-2 p-4 rounded border border-border-subtle text-text-main inline-block">
-              ✉️ contact@tobiasagossou.website
+              contact@tobiasagossou.website
             </div>
             <p className="mt-4 text-xs text-text-muted">
               Si vous estimez, après nous avoir contactés, que vos droits ne sont pas respectés, vous disposez du droit d&apos;introduire une réclamation auprès de l&apos;autorité de contrôle compétente (en France : CNIL — 3 Place de Fontenoy, 75007 Paris — www.cnil.fr).

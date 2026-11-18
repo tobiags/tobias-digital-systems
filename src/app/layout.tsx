@@ -30,7 +30,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Tobias Agossou — Digital Systems Studio | Architecture, UI & Automatisation',
   description:
-    "Tobias Agossou aide les entreprises ambitieuses à structurer, concevoir et faire évoluer des systèmes numériques clairs, performants et centrés sur l'humain. 410+ avis vérifiés, 519 missions réussies.",
+    "Tobias Agossou aide les entreprises ambitieuses à structurer, concevoir et faire évoluer des systèmes numériques clairs, performants et centrés sur l'humain. 508+ avis vérifiés, 508 missions livrées.",
   keywords: [
     'Tobias Agossou',
     'Digital Systems Studio',
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
     'Product Design',
     'Automatisation IA',
     'Design Systèmes',
-    'NestJS',
     'NextJS',
+    'React',
     'Freelance Tech',
   ],
   authors: [{ name: 'Tobias Agossou', url: 'https://www.tobiasagossou.website' }],
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Tobias Agossou — Digital Systems Studio',
     description:
-      'Conception de systèmes numériques élégants, véloces et automatisés. 400+ avis vérifiés.',
+      'Conception de systèmes numériques élégants, véloces et automatisés. 508+ avis vérifiés.',
     url: 'https://www.tobiasagossou.website',
     siteName: 'Tobias Agossou — Digital Systems Studio',
     images: [
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Tobias Agossou — Digital Systems Studio',
     description:
-      'Conception de systèmes numériques élégants, véloces et automatisés. 400+ avis vérifiés.',
+      'Conception de systèmes numériques élégants, véloces et automatisés. 508+ avis vérifiés.',
     images: ['/images/logo.png'],
   },
   robots: {
@@ -105,6 +105,12 @@ export default function RootLayout({
       className={`${bodoni.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
       <body className="font-body bg-bg text-text-main selection:bg-accent/20">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-text-main focus:text-surface-2 focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent font-mono text-xs"
+        >
+          Aller au contenu principal
+        </a>
         <JsonLd />
         {children}
       </body>

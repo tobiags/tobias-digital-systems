@@ -19,18 +19,16 @@ export default function MentionsLegalesPage() {
       <Header />
 
       <main className="flex-1 max-w-[1000px] mx-auto px-6 md:px-10 py-12 md:py-20 w-full">
-        {/* Breadcrumb & Navigation */}
         <div className="mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 font-mono text-xs tracking-wider text-text-muted hover:text-accent transition-colors"
+            className="inline-flex items-center gap-2 font-mono text-xs tracking-wider text-text-muted hover:text-accent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-sm py-1"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>RETOUR À L&apos;ACCUEIL</span>
           </Link>
         </div>
 
-        {/* Page Title */}
         <div className="border-b border-border-subtle pb-8 mb-12">
           <div className="flex items-center gap-2 font-mono text-xs tracking-widest text-text-muted uppercase mb-3">
             <ShieldCheck className="w-4 h-4 text-accent" />
@@ -44,9 +42,7 @@ export default function MentionsLegalesPage() {
           </p>
         </div>
 
-        {/* Content Sections */}
         <div className="space-y-12 text-[15px] leading-relaxed text-text-soft">
-          {/* Section 1: Éditeur du site */}
           <section className="border-l-2 border-border-strong pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               1. Éditeur du site
@@ -77,7 +73,6 @@ export default function MentionsLegalesPage() {
             </ul>
           </section>
 
-          {/* Section 2: Hébergement */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               2. Hébergement de l&apos;infrastructure
@@ -98,7 +93,6 @@ export default function MentionsLegalesPage() {
             </ul>
           </section>
 
-          {/* Section 3: Propriété intellectuelle */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               3. Propriété intellectuelle et droits d&apos;auteur
@@ -111,7 +105,6 @@ export default function MentionsLegalesPage() {
             </p>
           </section>
 
-          {/* Section 4: Limitation de responsabilité */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               4. Limitation de responsabilité
@@ -124,7 +117,6 @@ export default function MentionsLegalesPage() {
             </p>
           </section>
 
-          {/* Section 5: Liens hypertextes */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               5. Liens hypertextes externes
@@ -134,7 +126,6 @@ export default function MentionsLegalesPage() {
             </p>
           </section>
 
-          {/* Section 6: Droit applicable */}
           <section className="border-l-2 border-border-subtle pl-6">
             <h2 className="font-display text-xl sm:text-2xl font-normal text-text-main mb-3">
               6. Droit applicable et attribution de juridiction
